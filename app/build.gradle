@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace 'me.fsfaysalcse.ezylib'
+    namespace 'me.arvin.ezylib'
     compileSdk 33
 
     defaultConfig {

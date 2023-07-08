@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.fragment.admin.AddUserFragment">
+    tools:context="me.arvin.ezylib.ui.fragment.admin.AddUserFragment">
 
     <include
         android:id="@+id/toolbar"

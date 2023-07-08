@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.fragment.universal.LoginFragment">
+    tools:context="me.arvin.ezylib.ui.fragment.universal.LoginFragment">
 
 
     <LinearLayout
@@ -23,7 +23,6 @@
             android:background="@drawable/edittext_background"
             android:fontFamily="@font/poppins_regular"
             android:hint="Email"
-            android:text="fsfoysal15@gmail.com"
             android:padding="12dp"
             android:textSize="16sp" />
 
@@ -35,7 +34,6 @@
             android:background="@drawable/edittext_background"
             android:fontFamily="@font/poppins_regular"
             android:hint="Password"
-            android:text="123456"
             android:inputType="textPassword"
             android:padding="12dp"
             android:textSize="16sp" />

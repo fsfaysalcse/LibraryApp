@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/adminDashboardFragment"
-        android:name="me.fsfaysalcse.ezylib.ui.fragment.admin.AdminDashboardFragment"
+        android:name="me.arvin.ezylib.ui.fragment.admin.AdminDashboardFragment"
         android:label="fragment_admin_dashboard"
         tools:layout="@layout/fragment_admin_dashboard">
         <action
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="me.fsfaysalcse.ezylib.ui.fragment.universal.LoginFragment"
+        android:name="me.arvin.ezylib.ui.fragment.universal.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login">
         <action
@@ -52,32 +52,32 @@
     </fragment>
     <fragment
         android:id="@+id/userRegistrationFragment"
-        android:name="me.fsfaysalcse.ezylib.ui.fragment.universal.UserRegistrationFragment"
+        android:name="me.arvin.ezylib.ui.fragment.universal.UserRegistrationFragment"
         android:label="fragment_user_registration"
         tools:layout="@layout/fragment_user_registration" />
     <fragment
         android:id="@+id/addUserFragment"
-        android:name="me.fsfaysalcse.ezylib.ui.fragment.admin.AddUserFragment"
+        android:name="me.arvin.ezylib.ui.fragment.admin.AddUserFragment"
         android:label="fragment_add_user"
         tools:layout="@layout/fragment_add_user" />
     <fragment
         android:id="@+id/addBookFragment"
-        android:name="me.fsfaysalcse.ezylib.ui.fragment.admin.AddBookFragment"
+        android:name="me.arvin.ezylib.ui.fragment.admin.AddBookFragment"
         android:label="AddBookFragment"
         tools:layout="@layout/fragment_add_book" />
     <fragment
         android:id="@+id/bookListFragment"
-        android:name="me.fsfaysalcse.ezylib.ui.fragment.universal.BookListFragment"
+        android:name="me.arvin.ezylib.ui.fragment.universal.BookListFragment"
         android:label="BookListFragment"
         tools:layout="@layout/fragment_book_list" />
     <fragment
         android:id="@+id/adminEditProfileFragment"
-        android:name="me.fsfaysalcse.ezylib.ui.fragment.admin.AdminEditProfileFragment"
+        android:name="me.arvin.ezylib.ui.fragment.admin.AdminEditProfileFragment"
         android:label="AdminEditProfileFragment"
         tools:layout="@layout/fragment_admin_edit_profile" />
     <fragment
         android:id="@+id/searchBookFragment"
-        android:name="me.fsfaysalcse.ezylib.ui.fragment.universal.SearchBookFragment"
+        android:name="me.arvin.ezylib.ui.fragment.universal.SearchBookFragment"
         android:label="SearchBookFragment"
         tools:layout="@layout/fragment_search_book">
         <action
@@ -86,12 +86,12 @@
     </fragment>
     <fragment
         android:id="@+id/borrowedListFragment"
-        android:name="me.fsfaysalcse.ezylib.ui.fragment.admin.BorrowedListFragment"
+        android:name="me.arvin.ezylib.ui.fragment.admin.BorrowedListFragment"
         android:label="BorrowedListFragment"
         tools:layout="@layout/fragment_borrowed_list" />
     <fragment
         android:id="@+id/borrowFragment"
-        android:name="me.fsfaysalcse.ezylib.ui.fragment.admin.BorrowFragment"
+        android:name="me.arvin.ezylib.ui.fragment.admin.BorrowFragment"
         android:label="fragment_borrow"
         tools:layout="@layout/fragment_borrow">
 
@@ -102,7 +102,7 @@
     </fragment>
     <fragment
         android:id="@+id/userDashboardFragment"
-        android:name="me.fsfaysalcse.ezylib.ui.fragment.user.UserDashboardFragment"
+        android:name="me.arvin.ezylib.ui.fragment.user.UserDashboardFragment"
         android:label="user_dashboard_fragment"
         tools:layout="@layout/fragment_user_dashboard">
         <action
@@ -118,7 +118,7 @@
 
     <fragment
         android:id="@+id/studentBorrowedListFragment"
-        android:name="me.fsfaysalcse.ezylib.ui.fragment.user.StudentBorrowedListFragment"
+        android:name="me.arvin.ezylib.ui.fragment.user.StudentBorrowedListFragment"
         android:label="student_borrowed_list_fragment"
         tools:layout="@layout/fragment_borrowed_list" />
 

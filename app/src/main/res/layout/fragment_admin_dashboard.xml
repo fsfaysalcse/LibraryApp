@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragment.admin.AdminDashboardFragment">
+    tools:context="me.arvin.ezylib.ui.fragment.admin.AdminDashboardFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
