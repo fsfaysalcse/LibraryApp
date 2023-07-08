@@ -1,0 +1,146 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/user_main_page"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/vector_1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/vector_1"
+        android:contentDescription="vector_1"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/vector_2"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:contentDescription="vector_2"
+        android:src="@drawable/vector_2"
+        app:layout_constraintBottom_toBottomOf="@id/vector_1" />
+
+    <ImageView
+        android:id="@+id/artboard_1_1"
+        android:layout_width="250dp"
+        android:layout_height="180dp"
+        android:background="@drawable/artboard_1_1"
+        android:contentDescription="artboard_1_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.28"
+        app:layout_constraintStart_toStartOf="@+id/vector_1"
+        app:layout_constraintTop_toTopOf="@id/vector_1"
+        app:layout_constraintWidth_percent="1" />
+
+    <View
+        android:id="@+id/rectangle_5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/rectangle_5_shape"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.07"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <TextView
+        android:id="@+id/admin"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:elevation="10dp"
+        android:fontFamily="@font/poppins_bold"
+        android:gravity="center"
+        android:text="@string/admin_id_ek1_string"
+        android:textColor="@color/_bg___3__user_registration_ek2_color"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/rectangle_5"
+        app:layout_constraintEnd_toEndOf="@id/rectangle_5"
+        app:layout_constraintStart_toStartOf="@id/rectangle_5"
+        app:layout_constraintTop_toTopOf="@id/rectangle_5" />
+
+    <View
+        android:id="@+id/rectangle_6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/rectangle_4_shape"
+        android:elevation="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.07"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rectangle_5"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <TextView
+        android:id="@+id/user"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:elevation="10dp"
+        android:fontFamily="@font/poppins_bold"
+        android:gravity="center"
+        android:text="@string/user_id_ek1_string"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/rectangle_6"
+        app:layout_constraintEnd_toEndOf="@id/rectangle_6"
+        app:layout_constraintStart_toStartOf="@id/rectangle_6"
+        app:layout_constraintTop_toTopOf="@id/rectangle_6" />
+
+    <TextView
+        android:id="@+id/you_don_t_have_an_account_"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins_bold"
+        android:gravity="center"
+        android:text="@string/you_don_t_have_an_account__string"
+        android:textColor="@color/you_don_t_have_an_account__color"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@id/rectangle_6"
+        app:layout_constraintTop_toBottomOf="@id/rectangle_6" />
+
+    <TextView
+        android:id="@+id/sign_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins_bold"
+        android:gravity="center"
+        android:text="@string/sign_up_string"
+        android:textColor="@color/sign_up_color"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/rectangle_6"
+        app:layout_constraintTop_toBottomOf="@id/rectangle_6" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:background="@color/sign_up_color"
+        app:layout_constraintEnd_toEndOf="@id/sign_up"
+        app:layout_constraintStart_toStartOf="@id/sign_up"
+        app:layout_constraintTop_toBottomOf="@id/sign_up" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:background="@color/sign_up_color"
+        app:layout_constraintEnd_toEndOf="@id/you_don_t_have_an_account_"
+        app:layout_constraintStart_toStartOf="@id/you_don_t_have_an_account_"
+        app:layout_constraintTop_toBottomOf="@id/you_don_t_have_an_account_" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

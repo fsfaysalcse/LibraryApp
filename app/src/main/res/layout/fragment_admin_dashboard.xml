@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragment.admin.AdminDashboardFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnBookList"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_background"
+                android:fontFamily="@font/poppins_bold"
+                android:padding="16dp"
+                android:text="Book List"
+                android:textAllCaps="true" />
+
+            <Button
+                android:id="@+id/btnAddBook"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_background"
+                android:fontFamily="@font/poppins_bold"
+                android:padding="16dp"
+                android:text="Add Book"
+                android:textAllCaps="true" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnBorrowList"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_background"
+                android:fontFamily="@font/poppins_bold"
+                android:padding="16dp"
+                android:text="Borrow List"
+                android:textAllCaps="true" />
+
+            <Button
+                android:id="@+id/btnSearchBook"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_background"
+                android:fontFamily="@font/poppins_bold"
+                android:padding="16dp"
+                android:text="Search Book"
+                android:textAllCaps="true" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnEditProfile"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_background"
+                android:fontFamily="@font/poppins_bold"
+                android:padding="16dp"
+                android:text="Edit Profile"
+                android:textAllCaps="true" />
+
+            <Button
+                android:id="@+id/btnAddStudent"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_background"
+                android:fontFamily="@font/poppins_bold"
+                android:padding="16dp"
+                android:text="Add Student"
+                android:textAllCaps="true" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="?attr/actionBarTheme">
+
+
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/poppins_bold"
+            android:letterSpacing="0.4"
+            android:text="Admin Dashboard"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+</FrameLayout>

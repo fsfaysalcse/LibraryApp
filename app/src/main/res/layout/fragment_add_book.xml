@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- Include Toolbar -->
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/layout_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize" />
+
+    <!-- Rest of the layout -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <EditText
+            android:id="@+id/etBookTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_background"
+            android:hint="Book Title"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins_regular"
+            android:padding="12dp"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/etPublishYear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_background"
+            android:hint="Publish Year"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins_regular"
+            android:padding="12dp"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/etAuthor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_background"
+            android:hint="Author"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins_regular"
+            android:padding="12dp"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Save"
+            android:background="@drawable/button_background"
+            android:textColor="#FFFFFF"
+            android:padding="16dp"
+            android:textSize="16sp"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

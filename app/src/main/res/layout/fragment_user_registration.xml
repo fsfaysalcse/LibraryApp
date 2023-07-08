@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.fragment.universal.UserRegistrationFragment">
+
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/layout_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <Spinner
+            android:id="@+id/spinnerUserType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/edittext_background"
+            android:entries="@array/user_types"
+            android:padding="14dp"
+            android:spinnerMode="dropdown" />
+
+        <!-- Student ID Field -->
+        <EditText
+            android:id="@+id/etStudentId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edittext_background"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="Student ID"
+            android:padding="12dp"
+            android:textSize="16sp" />
+
+        <!-- Full Name Field -->
+        <EditText
+            android:id="@+id/etFullName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edittext_background"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="Full Name"
+            android:padding="12dp"
+            android:textSize="16sp" />
+
+        <!-- Email Field -->
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edittext_background"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="Email"
+            android:padding="12dp"
+            android:textSize="16sp" />
+
+        <!-- Phone Field -->
+        <EditText
+            android:id="@+id/etPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edittext_background"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="Phone"
+            android:padding="12dp"
+            android:textSize="16sp" />
+
+        <!-- Password Field -->
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edittext_background"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="12dp"
+            android:textSize="16sp" />
+
+        <!-- Admin-Only Field -->
+        <EditText
+            android:id="@+id/etAdminField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edittext_background"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="Admin Field"
+            android:padding="12dp"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
+        <!-- Register Button -->
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/button_background"
+            android:fontFamily="@font/poppins_bold"
+            android:padding="16dp"
+            android:text="Register"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

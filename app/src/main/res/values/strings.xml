@@ -1,0 +1,227 @@
+<resources>
+    <string name="app_name">EzyLib</string>
+    <string name="action_settings">Settings</string>
+
+
+    <string name="ek_img_content">ExportKit Image</string>
+    <string name="admin_string">admin</string>
+    <string name="you_don_t_have_an_account__string">you dont have an account?</string>
+    <string name="sign_up_string">Sign up</string>
+    <string name="user_string">user</string>
+    <string name="user_login_time_string">12:21 AM</string>
+
+
+    <!-- 3__user_registration strings -->
+
+    <string name="register_string">register</string>
+    <string name="full_name_string">full name</string>
+    <string name="student_id_string">Student ID</string>
+    <string name="email_address_string">email address</string>
+    <string name="password_string">password</string>
+    <string name="welcome__sign_up_to_your_account_string">Welcome! sign up to your account</string>
+
+    <!-- 4_user_login strings -->
+
+    <string name="sign_in_to_your_account_string">sign in to your account</string>
+    <string name="__sign_in_to_your_account_string">,sign in to your account</string>
+    <string name="login_string">login</string>
+    <string name="login_ek1_string">login</string>
+    <string name="email_address_ek1_string">email address</string>
+    <string name="password_ek1_string">password</string>
+
+    <!-- 5_user_main_foget_password strings -->
+
+    <string name="send_string">send</string>
+    <string name="enter_your_email_address_below_to_reset_your_password_string">enter your email address below to reset your  password</string>
+    <string name="forgot_your_password__string">Forgot your password</string>
+    <!--<string name="forgot_your_password__string">forgotyour password?</string>-->
+
+    <!-- 6__user_home_page strings -->
+
+    <string name="ezy_lib_string">ezy lib</string>
+    <string name="profile_string">Profile</string>
+    <string name="view_book_lists_string">View Book Lists</string>
+    <string name="list_of_browse_books_string">List of Browse books</string>
+    <string name="user_id_string">1181101131</string>
+    <string name="eroshini_mohan_string">eroshini mohan</string>
+    <string name="home_string">home</string>
+    <string name="search_book_string">Search Book</string>
+    <string name="penalty_string">Penalty</string>
+
+    <!-- user_profile_screen strings -->
+
+    <string name="edit_profile_string">edit profile</string>
+    \
+    <string name="update_the_info_string">update the info</string>
+    <string name="_12_21_am_string">12:21 AM</string>
+    <string name="user_profile_string">user profile</string>
+
+    <!-- 9__user_search_book strings -->
+
+    <string name="search_book_ek1_string">Search book</string>
+    <string name="introduction_of_artificial_intelligence_string">Introduction  of Artificial Intelligence</string>
+    <string name="introduction_of_ai_part_i_string">Introduction  of AI Part I</string>
+    <string name="introduction_of_ai_part_ii_string">Introduction  of AI Part II</string>
+    <string name="introduction_of_ai_part_iii_string">Introduction  of AI Part III</string>
+    <string name="search_book_ek2_string">Search Book</string>
+
+    <!-- 10__user_book_list strings -->
+
+    <string name="book_list_string">book List</string>
+    <string name="available_string">available</string>
+    <string name="the_evolution_of_technology_string">1- The evolution of technology</string>
+    <string name="managing_and_using_information_system_string">2- managing and using information      system</string>
+    <string name="_code__the_hidden_language_of_computer_hardware_and_software_string">3- CODE: The hidden language of       computer hardware and software</string>
+    <string name="big_data_big_challanges_string"> 4- big data big challanges</string>
+    <string name="understanding_the_digital_world_string">5- understanding the digital world</string>
+    <string name="n_a_string">N/A</string>
+    <string name="n_a_ek1_string">N/A</string>
+    <string name="available_ek1_string">available</string>
+    <string name="available_ek2_string">available</string>
+
+    <!-- 11__list_of_borroweed_books strings -->
+
+    <string name="list_of_borrowed_books_string">List of Borrowed books</string>
+    <string name="list_of_borrowed_books_ek1_string">List of Borrowed books</string>
+    <string name="selected_book_string">Selected book</string>
+    <string name="borrowed_date_string">Borroweddate</string>
+    <string name="returned_date_string">Returned date</string>
+
+    <!-- 13__userfaq strings -->
+
+    <string name="update_faq_string">update FAQ</string>
+    <string name="borrowing_returning_penality_string">borrowing/returning/penality</string>
+
+    <!-- penalty strings -->
+
+    <string name="penalty_ek3_string">penalty</string>
+    <string name="payment_method_string">payment method</string>
+    <string name="___string">$</string>
+    <string name="_1__big_data__big_challenges_string">1- big data, big challenges</string>
+    <string name="cash_string">cash</string>
+    <string name="online_banking_string">online banking</string>
+    <string name="rm_3_string">RM 3</string>
+
+    <!-- invoice strings -->
+
+    <string name="invoice_ek3_string">invoice</string>
+    <string name="invoice___254983_string">invoice # 254983</string>
+    <string name="invoice_date__19_01_2023_string">invoice date: 19/01/2023</string>
+    <string name="user_id_1181101131_string">1181101131</string>
+    <string name="description_string">description</string>
+    <string name="amount_string">amount</string>
+    <string name="due_for_big_data_big_challenges_string">due for big data big challenges</string>
+    <string name="terms_and_conditions_payment_within_5_days_string">Terms and conditions payment within 5 days</string>
+
+
+    <!-- payment_screen strings -->
+
+    <string name="pay_string">pay</string>
+    <string name="total_amount___rm_3_string">Total amount : RM 3</string>
+    <string name="user_name_string">user name</string>
+    <string name="bank_account_string">bank account</string>
+
+    <!-- receipt_screen strings -->
+
+    <string name="receipt_string">receipt</string>
+    <string name="paid_string">paid</string>
+    <string name="view_book_list_string">View Book List</string>
+
+    <!-- 1_interface strings -->
+
+    <!--<string name="app_name">Page 1</string>
+    <string name="ek_img_content">ExportKit Image</string>
+    <string name="ezy_lib_string">ezy lib</string>
+-->
+
+    <!-- 8__add_book strings -->
+
+    <string name="add_book_string">Add book</string>
+    <string name="title_of_the_book_string">Title of the Book</string>
+    <string name="year_of_the_book_string">Year of the Book</string>
+    <string name="author_of_the_book_string">Author of the Book</string>
+    <string name="add_book_ek1_string">add book</string>
+    <string name="add_book_ek2_string">add book</string>
+
+    <!-- 9__search_book strings -->
+
+    <!-- 10__book_list strings -->
+
+    <string name="the_age_of_string">1- the age of A.I.</string>
+    <string name="transformation_chaos_string">2- Transformation Chaos</string>
+    <string name="everyday_chaos__technology___complexity_string">3- Everyday Chaos: Technology &amp; Complexity</string>
+    <string name="technology___society__second_edition_string"> 4- Technology &amp; Society: Second Edition</string>
+    <string name="communicating_with_data_string">5- Communicating with data</string>
+
+    <!-- 11__list_of_borrowers strings -->
+
+    <string name="list_of_borrowers_string">List of Borrowers</string>
+    <string name="borrower_s_list_string">borrowers list</string>
+    <string name="student_name_string">studentname</string>
+    <string name="e_string">e</string>
+    <string name="d_7_02_2023_string">7/02/2023</string>
+
+    <!-- 12__invoice strings -->
+
+    <string name="invoice_string">invoice</string>
+    <string name="name_string">name</string>
+    <string name="payment_string">payment</string>
+    <string name="name_student_id_string">name/Student ID</string>
+
+    <!-- 14__user_id strings -->
+
+    <string name="create_id_string">Create ID</string>
+    <string name="first_name_string">First name</string>
+    <string name="last_name_string">last name</string>
+    <string name="contact_number_string">Contact number</string>
+    <string name="email_id_string">email id</string>
+    <string name="user_id_ek1_string">User ID</string>
+
+    <!-- 15__admin_id strings -->
+    <string name="admin_id_string">Admin ID</string>
+    <string name="admin_id_ek1_string">Admin ID</string>
+    <string name="title_activity_admin_login">admin_login_activity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="lorem_ipsum">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
+        volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
+        dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
+        litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse blandit eleifend
+        diam, vel rutrum tellus vulputate quis. Aliquam eget libero aliquet, imperdiet nisl a,
+        ornare ex. Sed rhoncus est ut libero porta lobortis. Fusce in dictum tellus.\n\n
+        Suspendisse interdum ornare ante. Aliquam nec cursus lorem. Morbi id magna felis. Vivamus
+        egestas, est a condimentum egestas, turpis nisl iaculis ipsum, in dictum tellus dolor sed
+        neque. Morbi tellus erat, dapibus ut sem a, iaculis tincidunt dui. Interdum et malesuada
+        fames ac ante ipsum primis in faucibus. Curabitur et eros porttitor, ultricies urna vitae,
+        molestie nibh. Phasellus at commodo eros, non aliquet metus. Sed maximus nisl nec dolor
+        bibendum, vel congue leo egestas.\n\n
+        Sed interdum tortor nibh, in sagittis risus mollis quis. Curabitur mi odio, condimentum sit
+        amet auctor at, mollis non turpis. Nullam pretium libero vestibulum, finibus orci vel,
+        molestie quam. Fusce blandit tincidunt nulla, quis sollicitudin libero facilisis et. Integer
+        interdum nunc ligula, et fermentum metus hendrerit id. Vestibulum lectus felis, dictum at
+        lacinia sit amet, tristique id quam. Cras eu consequat dui. Suspendisse sodales nunc ligula,
+        in lobortis sem porta sed. Integer id ultrices magna, in luctus elit. Sed a pellentesque
+        est.\n\n
+        Aenean nunc velit, lacinia sed dolor sed, ultrices viverra nulla. Etiam a venenatis nibh.
+        Morbi laoreet, tortor sed facilisis varius, nibh orci rhoncus nulla, id elementum leo dui
+        non lorem. Nam mollis ipsum quis auctor varius. Quisque elementum eu libero sed commodo. In
+        eros nisl, imperdiet vel imperdiet et, scelerisque a mauris. Pellentesque varius ex nunc,
+        quis imperdiet eros placerat ac. Duis finibus orci et est auctor tincidunt. Sed non viverra
+        ipsum. Nunc quis augue egestas, cursus lorem at, molestie sem. Morbi a consectetur ipsum, a
+        placerat diam. Etiam vulputate dignissim convallis. Integer faucibus mauris sit amet finibus
+        convallis.\n\n
+        Phasellus in aliquet mi. Pellentesque habitant morbi tristique senectus et netus et
+        malesuada fames ac turpis egestas. In volutpat arcu ut felis sagittis, in finibus massa
+        gravida. Pellentesque id tellus orci. Integer dictum, lorem sed efficitur ullamcorper,
+        libero justo consectetur ipsum, in mollis nisl ex sed nisl. Donec maximus ullamcorper
+        sodales. Praesent bibendum rhoncus tellus nec feugiat. In a ornare nulla. Donec rhoncus
+        libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
+        vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
+    </string>
+    <string name="hello_blank_fragment">Blanck</string>
+</resources>

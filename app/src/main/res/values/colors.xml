@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+
+    <color name="_bg___2_user_main_page_color">#FFFFFF</color>
+    <color name="rectangle_1_color">#ffffff</color>
+    <color name="admin_color">#FCFCFC</color>
+    <color name="you_don_t_have_an_account__color">#11216F</color>
+    <color name="sign_up_color">#000000</color>
+    <color name="line_1_color">#122270</color>
+
+    <!-- 3__user_registration colors -->
+
+    <color name="_bg___3__user_registration_ek2_color">#FFFFFF</color>
+    <color name="rectangle_5_color">#ffffff</color>
+    <color name="full_name_color">#9F9E9E</color>
+    <color name="welcome__sign_up_to_your_account_color">#000000</color>
+
+    <!-- 4_user_login colors -->
+
+    <color name="_bg___4_user_login_ek2_color">#FFFFFF</color>
+    <color name="sign_in_to_your_account_color">#000000</color>
+    <color name="rectangle_3_color">#F9F9F9</color>
+    <color name="email_address_color">#B3B1B1</color>
+
+    <!-- 5_user_main_foget_password colors -->
+
+    <color name="_bg___5_user_main_foget_password_ek2_color">#FFFFFF</color>
+    <color name="__sign_in_to_your_account_color">#000000</color>
+    <color name="email_address_ek1_color">#9F9E9E</color>
+
+    <!-- 6__user_home_page colors -->
+
+    <color name="_bg___6__user_home_page_ek2_color">#000000</color>
+    <color name="rectangle_7_color">#D9D9D9</color>
+    <color name="rectangle_8_color">#D4D4D4</color>
+    <color name="rectangle_6_color">#D4D4D4</color>
+
+
+    <!-- user_profile_screen colors -->
+
+    <color name="_bg__user_profile_screen_ek2_color">#FFFFFF</color>
+    <color name="user_profile_color">#000000</color>
+    <color name="ezy_lib_color">#11216F</color>
+
+    <!-- 9__user_search_book colors -->
+
+    <color name="_bg___9__user_search_book_ek2_color">#FFFFFF</color>
+    <color name="search_book_color">#000000</color>
+    <color name="introduction_of_artificial_intelligence_color">#9F9E9E</color>
+
+    <!-- 10__user_book_list colors -->
+    <color name="_bg___10__user_book_list_ek2_color">#FFFFFF</color>
+    <color name="book_list_color">#000000</color>
+    <color name="rectangle_10_color">#438C46</color>
+    <color name="rectangle_11_color">#C70A0A</color>
+    <color name="the_evolution_of_technology_color">#9F9E9E</color>
+
+    <!-- 11__list_of_borroweed_books colors -->
+
+    <color name="_bg___11__list_of_borroweed_books_ek2_color">#FFFFFF</color>
+    <color name="list_of_borrowed_books_color">#000000</color>
+    <color name="list_of_borrowed_books_ek1_color">#FCFCFC</color>
+
+    <!-- 13__userfaq colors -->
+
+    <color name="_bg___13__userfaq_ek2_color">#FFFFFF</color>
+    <color name="rectangle_9_color">#F9F9F9</color>
+    <color name="borrowing_returning_penality_color">#11216F</color>
+
+    <!-- penalty colors -->
+
+    <color name="_bg__penalty_ek2_color">#FFFFFF</color>
+    <color name="payment_method_color">#11216F</color>
+    <color name="rm_3_color">#FCFCFC</color>
+    <color name="ellipse_1_color">#D9D9D9</color>
+
+    <!-- invoice colors -->
+
+    <color name="_bg__invoice_ek2_color">#FFFFFF</color>
+    <color name="invoice_ek3_color">#F9F9F9</color>
+    <color name="invoice___254983_color">#11216F</color>
+    <color name="rectangle_13_color">#D9D9D9</color>
+    <color name="terms_and_conditions_payment_within_5_days_color">#FCFCFC</color>
+
+    <!-- payment_screen colors -->
+
+    <color name="_bg__payment_screen_ek2_color">#FFFFFF</color>
+    <color name="online_banking_color">#F9F9F9</color>
+    <color name="total_amount___rm_3_color">#11216F</color>
+    <color name="user_name_color">#9F9E9E</color>
+
+    <!-- receipt_screen colors -->
+
+    <color name="_bg__receipt_screen_ek2_color">#FFFFFF</color>
+    <color name="receipt_color">#F9F9F9</color>
+
+    <!-- 1_interface colors -->
+
+    <color name="_bg___1_interface_ek2_color">#000000</color>
+
+    <!-- 8__add_book colors -->
+
+    <color name="_bg___8__add_book_ek2_color">#FFFFFF</color>
+    <color name="add_book_color">#000000</color>
+    <color name="title_of_the_book_color">#9F9E9E</color>
+
+    <!-- 9__search_book colors -->
+
+    <color name="_bg___9__search_book_ek2_color">#FFFFFF</color>
+
+    <!-- 10__book_list colors -->
+
+    <color name="_bg___10__book_list_ek2_color">#FFFFFF</color>
+    <color name="_1__the_age_of_a_i__color">#9F9E9E</color>
+
+    <!-- 11__list_of_borrowers colors -->
+
+    <color name="_bg___11__list_of_borrowers_ek2_color">#FFFFFF</color>
+    <color name="list_of_borrowers_color">#000000</color>
+    <color name="e_color">#11216F</color>
+    <color name="d_7_02_2023_color">#172573</color>
+
+    <!-- 12__invoice colors -->
+
+    <color name="_bg___12__invoice_ek2_color">#FFFFFF</color>
+    <color name="invoice_color">#000000</color>
+    <color name="name_student_id_color">#9F9E9E</color>
+
+    <!-- 14__user_id colors -->
+
+    <color name="_bg___14__user_id_ek2_color">#FFFFFF</color>
+    <color name="user_id_color">#000000</color>
+    <color name="first_name_color">#9F9E9E</color>
+
+    <!-- 15__admin_id colors -->
+
+    <color name="_bg___15__admin_id_ek2_color">#FFFFFF</color>
+    <color name="admin_id_color">#000000</color>
+    <color name="rectangle_4_color">#F9F9F9</color>
+    <color name="email_id_color">#9F9E9E</color>
+
+</resources>

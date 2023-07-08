@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/layout_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvStudentId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Student ID"
+            android:textColor="@color/white"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/tvBookName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:text="Book Name"
+            android:textColor="@color/white"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/tvBorrowedDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:text="Borrowed Date"
+            android:textColor="@color/white"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/tvReturnDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:text="Return Date"
+            android:textColor="@color/white"
+            android:textSize="10sp" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>
