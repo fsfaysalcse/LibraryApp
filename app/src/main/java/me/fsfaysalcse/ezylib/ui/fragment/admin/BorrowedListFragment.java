@@ -40,6 +40,7 @@ public class BorrowedListFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
+
         // Setup Toolbar
         binding.toolbar.titleTextView.setText("Borrowed Books");
         binding.toolbar.backButton.setOnClickListener(v -> navController.navigateUp());

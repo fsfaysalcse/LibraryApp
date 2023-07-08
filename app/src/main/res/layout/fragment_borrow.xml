@@ -37,7 +37,8 @@
             android:hint="Student ID"
             android:inputType="text"
             android:padding="12dp"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:text="43543"/>
 
         <Button
             android:id="@+id/btnGiveBook"
@@ -59,13 +60,24 @@
         android:padding="16dp"
         android:visibility="gone">
 
+
+        <TextView
+            android:id="@+id/tvBookName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10sp"
+            android:fontFamily="@font/poppins_bold"
+            tools:text="Book Name : Java"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/tvStudentName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10sp"
             android:fontFamily="@font/poppins_regular"
-            android:text="Student Name : Alvin Maulana"
+            tools:text="Student Name : Alvin Maulana"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -75,7 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10sp"
             android:fontFamily="@font/poppins_regular"
-            android:text="Borrow Date : 23 July 2023"
+            tools:text="Borrow Date : 23 July 2023"
             android:textColor="@color/colorPrimary"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -86,7 +98,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10sp"
             android:fontFamily="@font/poppins_regular"
-            android:text="Return Date : 23 July 2023"
+            tools:text="Return Date : 23 July 2023"
             android:textColor="@color/rectangle_11_color"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -97,7 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10sp"
             android:fontFamily="@font/poppins_regular"
-            android:text="Charge : RM 5.00"
+            tools:text="Charge : RM 5.00"
             android:textSize="18sp"
             android:textStyle="bold" />
 

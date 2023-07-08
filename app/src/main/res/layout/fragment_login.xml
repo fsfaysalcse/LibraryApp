@@ -7,7 +7,6 @@
     tools:context=".ui.fragment.universal.LoginFragment">
 
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,24 +14,15 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <Spinner
-            android:id="@+id/spinnerUserType"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/edittext_background"
-            android:entries="@array/user_types"
-            android:padding="14dp"
-            android:spinnerMode="dropdown" />
 
         <EditText
-            android:id="@+id/etUsername"
+            android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@drawable/edittext_background"
             android:fontFamily="@font/poppins_regular"
-            android:hint="Username"
+            android:hint="Email"
             android:padding="12dp"
             android:textSize="16sp" />
 

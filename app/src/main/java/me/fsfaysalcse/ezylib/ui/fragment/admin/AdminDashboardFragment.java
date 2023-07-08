@@ -8,15 +8,20 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import me.fsfaysalcse.ezylib.MainActivity;
 import me.fsfaysalcse.ezylib.R;
 import me.fsfaysalcse.ezylib.databinding.FragmentAdminDashboardBinding;
+import me.fsfaysalcse.ezylib.ui.utli.SharedPreferenceManager;
 
 
 public class AdminDashboardFragment extends Fragment {
 
     private FragmentAdminDashboardBinding binding;
     private NavController navController;
+
+    private SharedPreferenceManager preferenceManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,6 +34,7 @@ public class AdminDashboardFragment extends Fragment {
     }
 
     private void init(View view) {
+        preferenceManager = new SharedPreferenceManager(requireContext());
         navController = ((MainActivity) requireActivity()).getNav();
 
         binding.btnAddStudent.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +76,16 @@ public class AdminDashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 navController.navigate(R.id.action_adminDashboardFragment_to_borrowedListFragment);
+            }
+        });
+
+        binding.btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                preferenceManager.setLoggedIn(false);
+                preferenceManager.setUserType("");
+                FirebaseAuth.getInstance().signOut();
+                navController.navigate(R.id.action_adminDashboardFragment_to_loginFragment);
             }
         });
     }

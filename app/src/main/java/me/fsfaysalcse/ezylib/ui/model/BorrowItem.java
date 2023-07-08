@@ -1,26 +1,58 @@
 package me.fsfaysalcse.ezylib.ui.model;
 
 public class BorrowItem {
-    private String title;
-    private String author;
-    private boolean isAvailable;
+    private String bookId;
+    private String bookTitle;
+    private String borrowDate;
+    private String returnDate;
+    private String studentId;
 
-    public BorrowItem(String title, String author, boolean isAvailable) {
-        this.title = title;
-        this.author = author;
-        this.isAvailable = isAvailable;
+    public BorrowItem(String bookId, String bookTitle, String borrowDate, String returnDate, String studentId, String id) {
+        this.bookId = bookId;
+        this.bookTitle = bookTitle;
+        this.borrowDate = borrowDate;
+        this.returnDate = returnDate;
+        this.studentId = studentId;
     }
 
-    public String getTitle() {
-        return title;
+    public String getBookId() {
+        return bookId;
     }
 
-    public String getAuthor() {
-        return author;
+    public void setBookId(String bookId) {
+        this.bookId = bookId;
     }
 
-    public boolean isAvailable() {
-        return isAvailable;
+    public String getBookTitle() {
+        return bookTitle;
+    }
+
+    public void setBookTitle(String bookTitle) {
+        this.bookTitle = bookTitle;
+    }
+
+    public String getBorrowDate() {
+        return borrowDate;
+    }
+
+    public void setBorrowDate(String borrowDate) {
+        this.borrowDate = borrowDate;
+    }
+
+    public String getReturnDate() {
+        return returnDate;
+    }
+
+    public void setReturnDate(String returnDate) {
+        this.returnDate = returnDate;
+    }
+
+    public String getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
     }
 }
 

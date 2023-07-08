@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardUseCompatPadding="true"
-    app:cardCornerRadius="5dp">
+    app:cardCornerRadius="5dp"
+    app:cardUseCompatPadding="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,12 +12,13 @@
         android:orientation="vertical"
         android:padding="16dp">
 
+
         <TextView
             android:id="@+id/tvBookTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Java: The Complete Reference"
             android:fontFamily="@font/poppins_medium"
+            android:text="Java: The Complete Reference"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -26,9 +27,9 @@
             android:id="@+id/tvAuthor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
             android:text="Faysal Ahmed"
             android:textColor="@color/colorPrimary"
-            android:fontFamily="@font/poppins_regular"
             android:textSize="14sp" />
 
         <TextView
@@ -38,6 +39,27 @@
             android:fontFamily="@font/poppins_regular"
             android:text="Publish Year : 2023"
             android:textSize="12sp" />
+
+
+        <TextView
+            android:id="@+id/tvBookId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_light"
+            android:text="Book Id: 43534345"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/btnDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_background_delte"
+            android:fontFamily="@font/poppins_regular"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="5dp"
+            android:text="Delete"
+            android:textColor="@color/rectangle_11_color" />
 
     </LinearLayout>
 

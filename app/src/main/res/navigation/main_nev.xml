@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_adminDashboardFragment_to_borrowedListFragment"
             app:destination="@id/borrowedListFragment" />
+        <action
+            android:id="@+id/action_adminDashboardFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -43,6 +46,9 @@
         <action
             android:id="@+id/action_loginFragment_to_userRegistrationFragment"
             app:destination="@id/userRegistrationFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_userDashboardFragment"
+            app:destination="@id/userDashboardFragment" />
     </fragment>
     <fragment
         android:id="@+id/userRegistrationFragment"
@@ -73,7 +79,7 @@
         android:id="@+id/searchBookFragment"
         android:name="me.fsfaysalcse.ezylib.ui.fragment.universal.SearchBookFragment"
         android:label="SearchBookFragment"
-        tools:layout="@layout/fragment_search_book" >
+        tools:layout="@layout/fragment_search_book">
         <action
             android:id="@+id/action_searchBookFragment_to_borrowFragment"
             app:destination="@id/borrowFragment" />
@@ -87,5 +93,20 @@
         android:id="@+id/borrowFragment"
         android:name="me.fsfaysalcse.ezylib.ui.fragment.admin.BorrowFragment"
         android:label="fragment_borrow"
-        tools:layout="@layout/fragment_borrow" />
+        tools:layout="@layout/fragment_borrow">
+
+        <argument
+            android:name="params"
+            app:argType="string" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/userDashboardFragment"
+        android:name="me.fsfaysalcse.ezylib.ui.fragment.user.UserDashboardFragment"
+        android:label="user_dashboard_fragment"
+        tools:layout="@layout/fragment_user_dashboard">
+        <action
+            android:id="@+id/action_userDashboardFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>

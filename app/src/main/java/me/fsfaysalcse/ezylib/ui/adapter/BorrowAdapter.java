@@ -8,29 +8,32 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import me.fsfaysalcse.ezylib.R;
-import me.fsfaysalcse.ezylib.ui.model.BorrowItem;
+import me.fsfaysalcse.ezylib.ui.model.Book;
+import me.fsfaysalcse.ezylib.ui.utli.SharedPreferenceManager;
 
-public class BorrowAdapter extends RecyclerView.Adapter<BorrowAdapter.BorrowViewHolder> {
+public class BorrowAdapter extends ListAdapter<Book, BorrowAdapter.BorrowViewHolder> {
 
     private Context context;
-    private List<BorrowItem> borrowList;
-
-
-   public interface OnItemClickListener {
-        void onItemClick(BorrowItem borrowItem);
-    }
-
+    private List<Book> originalList;
     private OnItemClickListener onItemClickListener;
 
-    public BorrowAdapter(Context context, List<BorrowItem> borrowList, OnItemClickListener listener) {
+    public interface OnItemClickListener {
+        void onItemClick(Book borrowItem);
+    }
+
+    public BorrowAdapter(Context context, OnItemClickListener onItemClickListener) {
+        super(DIFF_CALLBACK);
         this.context = context;
-        this.borrowList = borrowList;
-        this.onItemClickListener = listener;
+        this.onItemClickListener = onItemClickListener;
+        this.originalList = new ArrayList<>();
     }
 
     @NonNull
@@ -42,30 +45,46 @@ public class BorrowAdapter extends RecyclerView.Adapter<BorrowAdapter.BorrowView
 
     @Override
     public void onBindViewHolder(@NonNull BorrowViewHolder holder, int position) {
-        BorrowItem borrowItem = borrowList.get(position);
+        SharedPreferenceManager sharedPreferenceManager = new SharedPreferenceManager(context);
+        Book borrowItem = getItem(position);
 
-        holder.tvTitle.setText(borrowItem.getTitle());
+        holder.tvTitle.setText(borrowItem.getBookTitle());
         holder.tvAuthor.setText(borrowItem.getAuthor());
-        holder.tvAvailability.setText(borrowItem.isAvailable() ? "Available" : "Not Available");
+        holder.tvAvailability.setText(borrowItem.isBorrowed() ? "Not Available" : "Available");
 
-        if (borrowItem.isAvailable()) {
+        if (!borrowItem.isBorrowed()) {
+            holder.tvAvailability.setText("Available");
             holder.tvAvailability.setTextColor(context.getResources().getColor(R.color.colorPrimary));
         } else {
+            holder.tvAvailability.setText("Not Available");
             holder.tvAvailability.setTextColor(context.getResources().getColor(R.color.rectangle_11_color));
         }
 
         holder.root.setOnClickListener(v -> {
-            if (borrowItem.isAvailable()) {
-                onItemClickListener.onItemClick(borrowItem);
-            } else {
-                Toast.makeText(context, "This book is not available", Toast.LENGTH_SHORT).show();
+            if (sharedPreferenceManager.getUserType().equals("admin")) {
+                if (!borrowItem.isBorrowed()) {
+                    onItemClickListener.onItemClick(borrowItem);
+                } else {
+                    Toast.makeText(context, "This book is not available", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
 
-    @Override
-    public int getItemCount() {
-        return borrowList.size();
+    public void updateData(List<Book> bookList) {
+        originalList.clear();
+        originalList.addAll(bookList);
+        submitList(bookList);
+    }
+
+    public void search(String query) {
+        List<Book> searchResults = new ArrayList<>();
+        for (Book book : originalList) {
+            if (book.getBookTitle().toLowerCase().contains(query.toLowerCase())) {
+                searchResults.add(book);
+            }
+        }
+        submitList(searchResults);
     }
 
     public class BorrowViewHolder extends RecyclerView.ViewHolder {
@@ -80,5 +99,17 @@ public class BorrowAdapter extends RecyclerView.Adapter<BorrowAdapter.BorrowView
             tvAvailability = itemView.findViewById(R.id.tvAvailability);
         }
     }
-}
 
+    private static final DiffUtil.ItemCallback<Book> DIFF_CALLBACK = new DiffUtil.ItemCallback<Book>() {
+        @Override
+        public boolean areItemsTheSame(@NonNull Book oldItem, @NonNull Book newItem) {
+            return oldItem.getId().equals(newItem.getId());
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull Book oldItem, @NonNull Book newItem) {
+            return oldItem.getId().equals(newItem.getId()) && oldItem.getBookTitle().equals(newItem.getBookTitle());
+        }
+    };
+
+}

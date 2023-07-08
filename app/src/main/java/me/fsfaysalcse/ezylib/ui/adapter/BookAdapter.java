@@ -2,57 +2,82 @@ package me.fsfaysalcse.ezylib.ui.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
-import java.util.List;
 
-import me.fsfaysalcse.ezylib.R;
+import me.fsfaysalcse.ezylib.databinding.ItemBookBinding;
 import me.fsfaysalcse.ezylib.ui.model.Book;
+import me.fsfaysalcse.ezylib.ui.utli.SharedPreferenceManager;
 
+public class BookAdapter extends ListAdapter<Book, BookAdapter.BookViewHolder> {
 
-public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder> {
+    private final Context context;
 
-    private Context context;
-    private List<Book> bookList;
+    private OnItemClickListener listener;
 
-    public BookAdapter(Context context, List<Book> bookList) {
-        this.context = context;
-        this.bookList = bookList;
+    public interface OnItemClickListener {
+        void onItemClick(Book book);
+
+        void onDeleteClick(Book book);
     }
+
+    public BookAdapter(Context context, OnItemClickListener listener) {
+        super(DIFF_CALLBACK);
+        this.context = context;
+        this.listener = listener;
+    }
+
+    private static final DiffUtil.ItemCallback<Book> DIFF_CALLBACK = new DiffUtil.ItemCallback<Book>() {
+        @Override
+        public boolean areItemsTheSame(@NonNull Book oldItem, @NonNull Book newItem) {
+            return oldItem.getId().equals(newItem.getId());
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull Book oldItem, @NonNull Book newItem) {
+            return oldItem.getId().equals(newItem.getId()) && oldItem.getBookTitle().equals(newItem.getBookTitle());
+        }
+    };
 
     @NonNull
     @Override
     public BookViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_book, parent, false);
-        return new BookViewHolder(view);
+        ItemBookBinding binding = ItemBookBinding.inflate(LayoutInflater.from(context), parent, false);
+        return new BookViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull BookViewHolder holder, int position) {
-        Book book = bookList.get(position);
-
-        holder.tvBookTitle.setText(book.getBookTitle());
-        holder.tvAuthor.setText(book.getAuthor());
-        holder.tvPublishYear.setText(String.valueOf(book.getPublishYear()));
+        Book book = getItem(position);
+        holder.bind(book);
     }
 
-    @Override
-    public int getItemCount() {
-        return bookList.size();
-    }
 
     public class BookViewHolder extends RecyclerView.ViewHolder {
-        TextView tvBookTitle, tvAuthor, tvPublishYear;
+        private final ItemBookBinding binding;
 
-        public BookViewHolder(@NonNull View itemView) {
-            super(itemView);
-            tvBookTitle = itemView.findViewById(R.id.tvBookTitle);
-            tvAuthor = itemView.findViewById(R.id.tvAuthor);
-            tvPublishYear = itemView.findViewById(R.id.tvPublishYear);
+        public BookViewHolder(ItemBookBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
+        }
+
+        public void bind(Book book) {
+            binding.tvBookTitle.setText("Name : " + book.getBookTitle());
+            binding.tvBookId.setText("Id : " + book.getId());
+            binding.tvAuthor.setText("Author : " + book.getAuthor());
+            binding.tvPublishYear.setText("Publish Date : " + String.valueOf(book.getPublishYear()));
+
+            SharedPreferenceManager manager = new SharedPreferenceManager(context);
+            if (manager.getUserType().equals("admin")) {
+                binding.btnDelete.setVisibility(android.view.View.VISIBLE);
+                binding.btnDelete.setOnClickListener(v -> listener.onDeleteClick(book));
+            } else {
+                binding.btnDelete.setVisibility(android.view.View.GONE);
+            }
         }
     }
 }
-

@@ -40,6 +40,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/edittext_background"
             android:hint="Publish Year"
+            android:inputType="number"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/poppins_regular"
             android:padding="12dp"

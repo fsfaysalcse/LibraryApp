@@ -106,6 +106,18 @@
 
         </LinearLayout>
 
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:fontFamily="@font/poppins_bold"
+            android:padding="16dp"
+            android:text="LOGOUT"
+            android:textAllCaps="true"
+            android:textSize="23sp" />
+
     </LinearLayout>
 
 
