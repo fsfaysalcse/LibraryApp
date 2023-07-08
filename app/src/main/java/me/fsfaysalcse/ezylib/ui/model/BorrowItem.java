@@ -7,7 +7,7 @@ public class BorrowItem {
     private String returnDate;
     private String studentId;
 
-    public BorrowItem(String bookId, String bookTitle, String borrowDate, String returnDate, String studentId, String id) {
+    public BorrowItem(String bookId, String bookTitle, String borrowDate, String returnDate, String studentId) {
         this.bookId = bookId;
         this.bookTitle = bookTitle;
         this.borrowDate = borrowDate;

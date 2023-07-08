@@ -2,6 +2,7 @@ package me.fsfaysalcse.ezylib.ui.fragment.universal;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,7 +53,6 @@ public class LoginFragment extends Fragment {
         navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
         preferenceManager = new SharedPreferenceManager(requireContext());
 
-
         if (preferenceManager.isLoggedIn()) {
             if (preferenceManager.getUserType().equals("admin")) {
                 navController.navigate(R.id.action_loginFragment_to_adminDashboardFragment);
@@ -60,6 +60,7 @@ public class LoginFragment extends Fragment {
                 navController.navigate(R.id.action_loginFragment_to_userDashboardFragment);
             }
         }
+
         progressDialog = new ProgressDialog(requireContext());
         progressDialog.setTitle("Logging in");
         progressDialog.setMessage("Please wait...");

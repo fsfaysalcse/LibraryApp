@@ -5,21 +5,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
-import java.util.List;
 
 import me.fsfaysalcse.ezylib.R;
-import me.fsfaysalcse.ezylib.ui.model.BorrowedBookItem;
+import me.fsfaysalcse.ezylib.ui.model.BorrowItem;
 
-public class BorrowedBookAdapter extends RecyclerView.Adapter<BorrowedBookAdapter.BorrowedBookViewHolder> {
+public class BorrowedBookAdapter extends ListAdapter<BorrowItem, BorrowedBookAdapter.BorrowedBookViewHolder> {
 
     private Context context;
-    private List<BorrowedBookItem> borrowedBookList;
 
-    public BorrowedBookAdapter(Context context, List<BorrowedBookItem> borrowedBookList) {
+    public BorrowedBookAdapter(Context context) {
+        super(DIFF_CALLBACK);
         this.context = context;
-        this.borrowedBookList = borrowedBookList;
     }
 
     @NonNull
@@ -31,17 +32,12 @@ public class BorrowedBookAdapter extends RecyclerView.Adapter<BorrowedBookAdapte
 
     @Override
     public void onBindViewHolder(@NonNull BorrowedBookViewHolder holder, int position) {
-        BorrowedBookItem borrowedBookItem = borrowedBookList.get(position);
+        BorrowItem borrowItem = getItem(position);
 
-        holder.tvStudentId.setText(borrowedBookItem.getStudentId());
-        holder.tvBookName.setText(borrowedBookItem.getBookName());
-        holder.tvBorrowedDate.setText(borrowedBookItem.getBorrowedDate());
-        holder.tvReturnDate.setText(borrowedBookItem.getReturnDate());
-    }
-
-    @Override
-    public int getItemCount() {
-        return borrowedBookList.size();
+        holder.tvStudentId.setText(borrowItem.getStudentId());
+        holder.tvBookName.setText(borrowItem.getBookTitle());
+        holder.tvBorrowedDate.setText(borrowItem.getBorrowDate());
+        holder.tvReturnDate.setText(borrowItem.getReturnDate());
     }
 
     public class BorrowedBookViewHolder extends RecyclerView.ViewHolder {
@@ -55,5 +51,16 @@ public class BorrowedBookAdapter extends RecyclerView.Adapter<BorrowedBookAdapte
             tvReturnDate = itemView.findViewById(R.id.tvReturnDate);
         }
     }
-}
 
+    private static final DiffUtil.ItemCallback<BorrowItem> DIFF_CALLBACK = new DiffUtil.ItemCallback<BorrowItem>() {
+        @Override
+        public boolean areItemsTheSame(@NonNull BorrowItem oldItem, @NonNull BorrowItem newItem) {
+            return oldItem.getBookId().equals(newItem.getBookId());
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull BorrowItem oldItem, @NonNull BorrowItem newItem) {
+            return oldItem.getBookId().equals(newItem.getBookId());
+        }
+    };
+}

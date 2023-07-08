@@ -9,6 +9,8 @@ public class SharedPreferenceManager {
     private static final String KEY_USER_TYPE = "userType";
     private static final String KEY_IS_LOGGED_IN = "isLoggedIn";
 
+    private static final String KEY_IS_STUDENT_ID = "studentId";
+
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
 
@@ -34,6 +36,16 @@ public class SharedPreferenceManager {
     public boolean isLoggedIn() {
         return sharedPreferences.getBoolean(KEY_IS_LOGGED_IN, false);
     }
+
+    public void setStudentId(String studentId) {
+        editor.putString(KEY_IS_STUDENT_ID, studentId);
+        editor.apply();
+    }
+
+    public String getStudentId() {
+        return sharedPreferences.getString(KEY_IS_STUDENT_ID, "");
+    }
+
 
     public void clearSharedPreferences() {
         editor.clear();

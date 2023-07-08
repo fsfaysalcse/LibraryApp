@@ -108,5 +108,18 @@
         <action
             android:id="@+id/action_userDashboardFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_userDashboardFragment_to_searchBookFragment"
+            app:destination="@id/searchBookFragment" />
+        <action
+            android:id="@+id/action_userDashboardFragment_to_studentBorrowedListFragment"
+            app:destination="@id/studentBorrowedListFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/studentBorrowedListFragment"
+        android:name="me.fsfaysalcse.ezylib.ui.fragment.user.StudentBorrowedListFragment"
+        android:label="student_borrowed_list_fragment"
+        tools:layout="@layout/fragment_borrowed_list" />
+
 </navigation>

@@ -44,18 +44,6 @@
             android:padding="12dp"
             android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/etPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/edittext_background"
-            android:fontFamily="@font/poppins_regular"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:padding="12dp"
-            android:textSize="16sp" />
-
         <Button
             android:id="@+id/btnUpdate"
             android:layout_width="match_parent"

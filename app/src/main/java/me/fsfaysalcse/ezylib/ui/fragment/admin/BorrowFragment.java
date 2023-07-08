@@ -24,6 +24,7 @@ import me.fsfaysalcse.ezylib.ui.model.Book;
 import me.fsfaysalcse.ezylib.ui.model.BorrowItem;
 import me.fsfaysalcse.ezylib.ui.model.Student;
 import me.fsfaysalcse.ezylib.ui.utli.DateUtils;
+import me.fsfaysalcse.ezylib.ui.utli.Utility;
 
 
 public class BorrowFragment extends Fragment {
@@ -92,6 +93,8 @@ public class BorrowFragment extends Fragment {
             return;
         }
 
+        Utility.hideKeyboard(requireActivity(), binding.getRoot());
+
         progressDialog.show();
         firestore.collection("students")
                 .whereEqualTo("studentId", studentId)
@@ -142,7 +145,6 @@ public class BorrowFragment extends Fragment {
         BorrowItem borrowItem = new BorrowItem(
                 bookId,
                 bookTitle,
-                studentId,
                 borrowedDate,
                 returnDate,
                 studentId

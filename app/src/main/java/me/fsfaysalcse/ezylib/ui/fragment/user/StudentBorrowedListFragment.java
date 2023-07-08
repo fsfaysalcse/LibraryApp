@@ -1,4 +1,4 @@
-package me.fsfaysalcse.ezylib.ui.fragment.admin;
+package me.fsfaysalcse.ezylib.ui.fragment.user;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -14,13 +14,10 @@ import androidx.navigation.NavController;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.google.android.gms.tasks.OnFailureListener;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import me.fsfaysalcse.ezylib.MainActivity;
@@ -29,7 +26,7 @@ import me.fsfaysalcse.ezylib.ui.adapter.BorrowedBookAdapter;
 import me.fsfaysalcse.ezylib.ui.model.BorrowItem;
 import me.fsfaysalcse.ezylib.ui.utli.SharedPreferenceManager;
 
-public class BorrowedListFragment extends Fragment {
+public class StudentBorrowedListFragment extends Fragment {
 
     private FragmentBorrowedBookBinding binding;
     private BorrowedBookAdapter borrowedBookAdapter;
@@ -37,6 +34,8 @@ public class BorrowedListFragment extends Fragment {
     private NavController navController;
 
     private ProgressDialog dialog;
+
+    private SharedPreferenceManager preferenceManager;
 
 
     @Nullable
@@ -50,6 +49,7 @@ public class BorrowedListFragment extends Fragment {
     }
 
     private void init() {
+        preferenceManager = new SharedPreferenceManager(requireContext());
         dialog = new ProgressDialog(requireContext());
         dialog.setMessage("Loading...");
         dialog.setCancelable(false);
@@ -63,6 +63,7 @@ public class BorrowedListFragment extends Fragment {
     private void setupView() {
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         binding.recyclerView.setAdapter(borrowedBookAdapter);
+
     }
 
 
@@ -73,10 +74,11 @@ public class BorrowedListFragment extends Fragment {
     }
 
     private void getAllTheBorrowedBooks() {
-
+        String stdId = preferenceManager.getStudentId();
         dialog.show();
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         firestore.collection("borrows")
+                .whereEqualTo("studentId", stdId)
                 .get()
                 .addOnCompleteListener(task -> {
                     dialog.dismiss();
