@@ -115,8 +115,7 @@
             android:layout_marginBottom="10sp"
             android:fontFamily="@font/poppins_regular"
             android:textSize="18sp"
-            android:textStyle="bold"
-            tools:text="Charge : RM 5.00" />
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnPayment"

@@ -116,7 +116,7 @@ public class BorrowFragment extends Fragment {
                                 binding.tvStudentName.setText("Student Name : " + student.getFullName());
                                 binding.tvBorrowedDate.setText("Borrowed Date : " + DateUtils.getCurrentDate());
                                 binding.tvReturnDate.setText("Return Date : " + DateUtils.getDateInFuture(7));
-                                binding.tvCharge.setText("Charge : RM 5.00");
+                                //binding.tvCharge.setText("Charge : RM 5.00");
                             }
 
                         } else {
