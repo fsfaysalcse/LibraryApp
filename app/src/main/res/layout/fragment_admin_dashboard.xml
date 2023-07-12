@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/gradient_background"
     tools:context="me.arvin.ezylib.ui.fragment.admin.AdminDashboardFragment">
 
     <LinearLayout
@@ -13,13 +15,32 @@
         android:orientation="vertical"
         android:padding="16dp">
 
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_book"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:letterSpacing="0.6"
+            android:text="Admin Dashboard"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="23sp" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btnBookList"
+                android:id="@+id/btnSearchBook"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_margin="8dp"
@@ -27,7 +48,7 @@
                 android:background="@drawable/button_background"
                 android:fontFamily="@font/poppins_bold"
                 android:padding="16dp"
-                android:text="Book List"
+                android:text="Search Book"
                 android:textAllCaps="true" />
 
             <Button
@@ -61,36 +82,6 @@
                 android:text="Borrow List"
                 android:textAllCaps="true" />
 
-            <Button
-                android:id="@+id/btnSearchBook"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_background"
-                android:fontFamily="@font/poppins_bold"
-                android:padding="16dp"
-                android:text="Search Book"
-                android:textAllCaps="true" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnEditProfile"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_background"
-                android:fontFamily="@font/poppins_bold"
-                android:padding="16dp"
-                android:text="Edit Profile"
-                android:textAllCaps="true" />
 
             <Button
                 android:id="@+id/btnAddStudent"
@@ -106,45 +97,20 @@
 
         </LinearLayout>
 
-
-        <Button
-            android:id="@+id/btnLogout"
+        <TextView
+            android:id="@+id/tvFaq"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:fontFamily="@font/poppins_bold"
-            android:padding="16dp"
-            android:text="LOGOUT"
-            android:textAllCaps="true"
-            android:textSize="23sp" />
+            android:text="Frequently Ask Question"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:textAllCaps="true"/>
+
 
     </LinearLayout>
-
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"
-        android:theme="?attr/actionBarTheme">
-
-
-        <TextView
-            android:id="@+id/titleTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="8dp"
-            android:fontFamily="@font/poppins_bold"
-            android:letterSpacing="0.4"
-            android:text="Admin Dashboard"
-            android:textAllCaps="true"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp" />
-
-
-    </androidx.appcompat.widget.Toolbar>
 
 
 </FrameLayout>

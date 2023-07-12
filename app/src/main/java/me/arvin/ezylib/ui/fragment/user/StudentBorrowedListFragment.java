@@ -16,17 +16,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import me.arvin.ezylib.MainActivity;
+import me.arvin.ezylib.databinding.FragmentBorrowedBookBinding;
 import me.arvin.ezylib.ui.adapter.BorrowedBookAdapter;
 import me.arvin.ezylib.ui.model.BorrowItem;
 import me.arvin.ezylib.ui.utli.SharedPreferenceManager;
-import me.arvin.ezylib.databinding.FragmentBorrowedBookBinding;
 
-public class StudentBorrowedListFragment extends Fragment {
+public class StudentBorrowedListFragment extends Fragment implements BorrowedBookAdapter.OnItemClickListener {
 
     private FragmentBorrowedBookBinding binding;
     private BorrowedBookAdapter borrowedBookAdapter;
@@ -57,7 +58,7 @@ public class StudentBorrowedListFragment extends Fragment {
         binding.toolbar.titleTextView.setText("Borrowed Books");
         binding.toolbar.backButton.setOnClickListener(v -> navController.navigateUp());
 
-        borrowedBookAdapter = new BorrowedBookAdapter(getActivity());
+        borrowedBookAdapter = new BorrowedBookAdapter(getActivity(), this);
     }
 
     private void setupView() {
@@ -120,5 +121,9 @@ public class StudentBorrowedListFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null; // Release the binding
+    }
+
+    @Override
+    public void onItemClick(BorrowItem borrowItem) {
     }
 }

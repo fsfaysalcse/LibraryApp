@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:background="@drawable/gradient_background"
-    tools:context="me.arvin.ezylib.ui.fragment.admin.AddUserFragment">
+    android:orientation="vertical">
 
     <include
         android:id="@+id/toolbar"
@@ -16,76 +13,66 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:gravity="center"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp">
-
-
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_book"
-            app:tint="@color/white" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
-            android:fontFamily="@font/poppins_bold"
-            android:gravity="center"
-            android:letterSpacing="0.6"
-            android:text="@string/app_name"
-            android:textAllCaps="true"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Select Payment Method"
             android:textColor="@color/white"
-            android:textSize="23sp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/etStudentId"
+        <Spinner
+            android:id="@+id/spinnerPaymentMethod"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
             android:background="@drawable/edittext_background"
+            android:entries="@array/payment_method"
             android:fontFamily="@font/poppins_regular"
-            android:hint="Student Id"
             android:paddingHorizontal="16dp"
             android:paddingVertical="12dp"
             android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/etFullName"
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/loginLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#978787"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/paying_by"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/edittext_background"
-            android:fontFamily="@font/poppins_regular"
-            android:hint="Full Name"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="12dp"
-            android:textSize="16sp" />
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/poppins_light"
+            android:gravity="center"
+            android:text="Login into your account\nto proceed the payment"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
 
         <EditText
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/edittext_background"
             android:fontFamily="@font/poppins_regular"
-            android:hint="Email"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="12dp"
-            android:textSize="16sp" />
-
-        <EditText
-            android:id="@+id/etPhone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/edittext_background"
-            android:fontFamily="@font/poppins_regular"
-            android:hint="Phone"
+            android:hint="Phone Number"
             android:paddingHorizontal="16dp"
             android:paddingVertical="12dp"
             android:textSize="16sp" />
@@ -94,24 +81,51 @@
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/edittext_background"
             android:fontFamily="@font/poppins_regular"
-            android:hint="Password"
-            android:inputType="textPassword"
+            android:hint="PIN"
+            android:inputType="numberPassword"
             android:paddingHorizontal="16dp"
             android:paddingVertical="12dp"
             android:textSize="16sp" />
 
         <Button
-            android:id="@+id/btnRegister"
+            android:id="@+id/payBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/poppins_bold"
             android:letterSpacing="0.5"
             android:padding="16dp"
-            android:text="Register"
+            android:text="Login &amp; Pay"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/cashLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#978787"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:visibility="visible">
+
+
+        <Button
+            android:id="@+id/payCash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins_bold"
+            android:letterSpacing="0.5"
+            android:padding="16dp"
+            android:text="Pay by cash"
             android:textAllCaps="true"
             android:textColor="#FFFFFF"
             android:textSize="16sp" />

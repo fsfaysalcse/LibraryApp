@@ -1,4 +1,4 @@
-package me.arvin.ezylib.ui.fragment.admin;
+package me.arvin.ezylib.ui.fragment.user;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -14,30 +14,23 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import me.arvin.ezylib.MainActivity;
-import me.arvin.ezylib.R;
-import me.arvin.ezylib.databinding.FragmentAdminProfileBinding;
-import me.arvin.ezylib.ui.utli.SharedPreferenceManager;
-
-public class AdminProfileFragment extends Fragment {
+import me.arvin.ezylib.databinding.FragmentAdminEditProfileBinding;
 
 
-    private FragmentAdminProfileBinding binding;
+public class UserEditProfileFragment extends Fragment {
 
-
-    private SharedPreferenceManager preferenceManager;
-
+    private FragmentAdminEditProfileBinding binding;
     private NavController navController;
 
+    private ProgressDialog progressDialog;
 
     private FirebaseFirestore firestore;
 
 
-    private ProgressDialog progressDialog;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentAdminProfileBinding.inflate(inflater, container, false);
+        binding = FragmentAdminEditProfileBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
         init(view);
         setupView();
@@ -45,54 +38,72 @@ public class AdminProfileFragment extends Fragment {
     }
 
     private void init(View view) {
-        navController = ((MainActivity) requireActivity()).getNav();
-        preferenceManager = new SharedPreferenceManager(requireContext());
-        firestore = FirebaseFirestore.getInstance();
 
+        navController = ((MainActivity) requireActivity()).getNav();
+        firestore = FirebaseFirestore.getInstance();
         progressDialog = new ProgressDialog(requireContext());
         progressDialog.setMessage("Please wait...");
         progressDialog.setCancelable(false);
+
     }
 
     private void setupView() {
-
-        binding.btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                preferenceManager.setLoggedIn(false);
-                preferenceManager.setUserType("");
-                FirebaseAuth.getInstance().signOut();
-                navController.navigate(R.id.action_adminHomeFragment_to_loginFragment);
-            }
-        });
-
-        binding.btnEditProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.navigate(R.id.action_adminHomeFragment_to_adminEditProfileFragment);
-            }
-        });
-
+        binding.toolbar.titleTextView.setText("Edit Profile");
+        binding.toolbar.backButton.setOnClickListener(v -> navController.popBackStack());
         getAdminData();
 
+        binding.btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateAdminData();
+            }
+        });
+    }
+
+    private void updateAdminData() {
+        String fullName = binding.etFullName.getText().toString().trim();
+        String phone = binding.etPhone.getText().toString().trim();
+
+        if (fullName.isEmpty()) {
+            binding.etFullName.setError("Enter your full name");
+            binding.etFullName.requestFocus();
+            return;
+        }
+
+        if (phone.isEmpty()) {
+            binding.etPhone.setError("Enter your phone number");
+            binding.etPhone.requestFocus();
+            return;
+        }
+
+        progressDialog.show();
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        firestore.collection("students").document(userId)
+                .update("fullName", fullName, "phone", phone)
+                .addOnSuccessListener(aVoid -> {
+                    progressDialog.dismiss();
+                    Toast.makeText(requireContext(), "Profile updated successfully", Toast.LENGTH_SHORT).show();
+                    navController.popBackStack();
+                })
+                .addOnFailureListener(e -> {
+                    progressDialog.dismiss();
+                    Toast.makeText(requireContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
     }
 
     private void getAdminData() {
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         progressDialog.show();
-        firestore.collection("admins").document(userId)
+        firestore.collection("students").document(userId)
                 .get()
                 .addOnSuccessListener(documentSnapshot -> {
                     progressDialog.dismiss();
                     if (documentSnapshot.exists()) {
                         String fullName = documentSnapshot.getString("fullName");
                         String phone = documentSnapshot.getString("phone");
-                        String email = documentSnapshot.getString("email");
 
-                        binding.fullNameValueTextView.setText(fullName);
-                        binding.phoneValueTextView.setText(phone);
-                        binding.emailValueTextView.setText(email);
-
+                        binding.etFullName.setText(fullName);
+                        binding.etPhone.setText(phone);
                     } else {
                         Toast.makeText(requireContext(), "User not exist", Toast.LENGTH_SHORT).show();
                     }

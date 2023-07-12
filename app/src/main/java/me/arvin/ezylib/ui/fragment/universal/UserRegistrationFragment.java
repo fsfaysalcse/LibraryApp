@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,10 +17,10 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import me.arvin.ezylib.MainActivity;
+import me.arvin.ezylib.databinding.FragmentUserRegistrationBinding;
 import me.arvin.ezylib.ui.model.Admin;
 import me.arvin.ezylib.ui.model.Student;
 import me.arvin.ezylib.ui.utli.Utility;
-import me.arvin.ezylib.databinding.FragmentUserRegistrationBinding;
 
 
 public class UserRegistrationFragment extends Fragment {
@@ -33,7 +32,7 @@ public class UserRegistrationFragment extends Fragment {
     private FirebaseFirestore firestore;
     private ProgressDialog progressDialog;
 
-    private String userType;
+    private String userType = "User";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,25 +58,6 @@ public class UserRegistrationFragment extends Fragment {
 
     private void setupView() {
         binding.toolbar.backButton.setOnClickListener(v -> navController.navigateUp());
-
-
-        binding.spinnerUserType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                if (position == 1) {
-                    binding.etStudentId.setVisibility(View.VISIBLE);
-                } else {
-                    binding.etStudentId.setVisibility(View.GONE);
-                }
-
-                userType = parentView.getItemAtPosition(position).toString();
-                binding.toolbar.titleTextView.setText(userType + " Registration");
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {}
-
-        });
 
 
         binding.btnRegister.setOnClickListener(v -> {

@@ -15,24 +15,29 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import me.arvin.ezylib.MainActivity;
 import me.arvin.ezylib.R;
-import me.arvin.ezylib.databinding.FragmentUserDashboardBinding;
+import me.arvin.ezylib.databinding.FragmentUserProfileBinding;
 import me.arvin.ezylib.ui.utli.SharedPreferenceManager;
 
-public class UserDashboardFragment extends Fragment {
+public class UserProfileFragment extends Fragment {
 
-    private FragmentUserDashboardBinding binding;
-    private NavController navController;
+
+    private FragmentUserProfileBinding binding;
+
 
     private SharedPreferenceManager preferenceManager;
 
+    private NavController navController;
+
+
     private FirebaseFirestore firestore;
+
 
     private ProgressDialog progressDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentUserDashboardBinding.inflate(inflater, container, false);
+        binding = FragmentUserProfileBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
         init(view);
         setupView();
@@ -40,55 +45,41 @@ public class UserDashboardFragment extends Fragment {
     }
 
     private void init(View view) {
-        preferenceManager = new SharedPreferenceManager(requireContext());
         navController = ((MainActivity) requireActivity()).getNav();
+        preferenceManager = new SharedPreferenceManager(requireContext());
         firestore = FirebaseFirestore.getInstance();
 
         progressDialog = new ProgressDialog(requireContext());
-        progressDialog.setCancelable(false);
         progressDialog.setMessage("Please wait...");
-
+        progressDialog.setCancelable(false);
     }
 
     private void setupView() {
 
-        binding.btnSearchBook.setOnClickListener(new View.OnClickListener() {
+        binding.btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navController.navigate(R.id.action_userHomeFragment_to_searchBookFragment);
+                preferenceManager.setLoggedIn(false);
+                preferenceManager.setUserType("");
+                preferenceManager.setStudentId("");
+                FirebaseAuth.getInstance().signOut();
+                navController.navigate(R.id.action_userHomeFragment_to_loginFragment);
             }
         });
 
-        binding.btnBorrowList.setOnClickListener(new View.OnClickListener() {
+        binding.btnEditProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navController.navigate(R.id.action_userHomeFragment_to_studentBorrowedListFragment);
+                navController.navigate(R.id.action_userHomeFragment_to_userEditProfileFragment);
             }
         });
 
-        binding.tvFaq.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.navigate(R.id.action_userHomeFragment_to_faqFragment);
-            }
-        });
+        getAdminData();
 
-        binding.btnPenalty.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.navigate(R.id.action_userHomeFragment_to_penaltyFragment);
-            }
-        });
-
-
-        if (preferenceManager.getStudentId().equals("")) {
-            getStudentInformation();
-        }
     }
 
-    private void getStudentInformation() {
+    private void getAdminData() {
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
         progressDialog.show();
         firestore.collection("students").document(userId)
                 .get()
@@ -96,7 +87,15 @@ public class UserDashboardFragment extends Fragment {
                     progressDialog.dismiss();
                     if (documentSnapshot.exists()) {
                         String studentId = documentSnapshot.getString("studentId");
-                        preferenceManager.setStudentId(studentId);
+                        String fullName = documentSnapshot.getString("fullName");
+                        String phone = documentSnapshot.getString("phone");
+                        String email = documentSnapshot.getString("email");
+
+                        binding.studentIdValueTextView.setText(studentId);
+                        binding.fullNameValueTextView.setText(fullName);
+                        binding.phoneValueTextView.setText(phone);
+                        binding.emailValueTextView.setText(email);
+
                     } else {
                         Toast.makeText(requireContext(), "User not exist", Toast.LENGTH_SHORT).show();
                     }

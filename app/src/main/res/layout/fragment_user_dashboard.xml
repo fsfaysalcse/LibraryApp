@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
     tools:context="me.arvin.ezylib.ui.fragment.admin.AdminDashboardFragment">
 
     <LinearLayout
@@ -12,6 +14,25 @@
         android:gravity="center"
         android:orientation="vertical"
         android:padding="16dp">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_book"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:letterSpacing="0.6"
+            android:text="Student Dashboard"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="23sp" />
 
 
         <LinearLayout
@@ -48,47 +69,36 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"/>
+            android:orientation="horizontal">
 
+            <Button
+                android:id="@+id/tvFaq"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_background"
+                android:fontFamily="@font/poppins_bold"
+                android:padding="16dp"
+                android:text="FAQ"
+                android:textAllCaps="true" />
 
-        <Button
-            android:id="@+id/btnLogout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:fontFamily="@font/poppins_bold"
-            android:padding="16dp"
-            android:text="LOGOUT"
-            android:textAllCaps="true"
-            android:textSize="23sp" />
+            <Button
+                android:id="@+id/btnPenalty"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_background"
+                android:fontFamily="@font/poppins_bold"
+                android:padding="16dp"
+                android:text="Penalty"
+                android:textAllCaps="true" />
+
+        </LinearLayout>
+
 
     </LinearLayout>
-
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"
-        android:theme="?attr/actionBarTheme">
-
-
-        <TextView
-            android:id="@+id/titleTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="8dp"
-            android:fontFamily="@font/poppins_bold"
-            android:letterSpacing="0.4"
-            android:text="STUDENT Dashboard"
-            android:textAllCaps="true"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
-
-
-    </androidx.appcompat.widget.Toolbar>
 
 
 </FrameLayout>

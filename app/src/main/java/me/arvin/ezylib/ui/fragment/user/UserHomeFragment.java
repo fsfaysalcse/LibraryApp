@@ -1,4 +1,4 @@
-package me.arvin.ezylib.ui.fragment.admin;
+package me.arvin.ezylib.ui.fragment.user;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,18 +7,18 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-import me.arvin.ezylib.databinding.FragmentAdminHomeBinding;
-import me.arvin.ezylib.ui.adapter.ViewPagerAdapter;
+import me.arvin.ezylib.databinding.FragmentUserHomeBinding;
+import me.arvin.ezylib.ui.adapter.UserViewPagerAdapter;
 import me.ibrahimsn.lib.OnItemSelectedListener;
 
 
-public class AdminHomeFragment extends Fragment {
-    private FragmentAdminHomeBinding binding;
+public class UserHomeFragment extends Fragment {
+    private FragmentUserHomeBinding binding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentAdminHomeBinding.inflate(inflater, container, false);
+        binding = FragmentUserHomeBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
         init(view);
         setupView();
@@ -29,7 +29,7 @@ public class AdminHomeFragment extends Fragment {
     }
 
     private void setupView() {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(requireActivity());
+        UserViewPagerAdapter adapter = new UserViewPagerAdapter(requireActivity());
         binding.viewPager.setAdapter(adapter);
         binding.viewPager.setUserInputEnabled(false);
 

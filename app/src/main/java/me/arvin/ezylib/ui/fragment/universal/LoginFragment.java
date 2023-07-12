@@ -54,9 +54,9 @@ public class LoginFragment extends Fragment {
 
         if (preferenceManager.isLoggedIn()) {
             if (preferenceManager.getUserType().equals("admin")) {
-                navController.navigate(R.id.action_loginFragment_to_adminDashboardFragment);
+                navController.navigate(R.id.action_loginFragment_to_adminHomeFragment);
             } else {
-                navController.navigate(R.id.action_loginFragment_to_userDashboardFragment);
+                navController.navigate(R.id.action_loginFragment_to_userHomeFragment);
             }
         }
 
@@ -77,6 +77,14 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 navController.navigate(R.id.action_loginFragment_to_userRegistrationFragment);
+                Utility.hideKeyboard(requireContext(), binding.getRoot());
+            }
+        });
+
+        binding.tvForgetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(R.id.action_loginFragment_to_forgotPasswordFragment);
                 Utility.hideKeyboard(requireContext(), binding.getRoot());
             }
         });
@@ -115,11 +123,11 @@ public class LoginFragment extends Fragment {
 
         userRef.get().addOnSuccessListener(documentSnapshot -> {
             if (documentSnapshot.exists()) {
-                navController.navigate(R.id.action_loginFragment_to_adminDashboardFragment);
+                navController.navigate(R.id.action_loginFragment_to_adminHomeFragment);
                 preferenceManager.setUserType("admin");
                 preferenceManager.setLoggedIn(true);
             } else {
-                navController.navigate(R.id.action_loginFragment_to_userDashboardFragment);
+                navController.navigate(R.id.action_loginFragment_to_userHomeFragment);
                 preferenceManager.setUserType("user");
                 preferenceManager.setLoggedIn(true);
             }

@@ -6,49 +6,22 @@
     app:startDestination="@id/loginFragment">
 
     <fragment
-        android:id="@+id/adminDashboardFragment"
-        android:name="me.arvin.ezylib.ui.fragment.admin.AdminDashboardFragment"
-        android:label="fragment_admin_dashboard"
-        tools:layout="@layout/fragment_admin_dashboard">
-        <action
-            android:id="@+id/action_adminDashboardFragment_to_addUserFragment"
-            app:destination="@id/addUserFragment" />
-        <action
-            android:id="@+id/action_adminDashboardFragment_self"
-            app:destination="@id/adminDashboardFragment" />
-        <action
-            android:id="@+id/action_adminDashboardFragment_to_addBookFragment"
-            app:destination="@id/addBookFragment" />
-        <action
-            android:id="@+id/action_adminDashboardFragment_to_bookListFragment"
-            app:destination="@id/bookListFragment" />
-        <action
-            android:id="@+id/action_adminDashboardFragment_to_adminEditProfileFragment"
-            app:destination="@id/adminEditProfileFragment" />
-        <action
-            android:id="@+id/action_adminDashboardFragment_to_searchBookFragment"
-            app:destination="@id/searchBookFragment" />
-        <action
-            android:id="@+id/action_adminDashboardFragment_to_borrowedListFragment"
-            app:destination="@id/borrowedListFragment" />
-        <action
-            android:id="@+id/action_adminDashboardFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/loginFragment"
         android:name="me.arvin.ezylib.ui.fragment.universal.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login">
         <action
-            android:id="@+id/action_loginFragment_to_adminDashboardFragment"
-            app:destination="@id/adminDashboardFragment" />
-        <action
             android:id="@+id/action_loginFragment_to_userRegistrationFragment"
             app:destination="@id/userRegistrationFragment" />
         <action
-            android:id="@+id/action_loginFragment_to_userDashboardFragment"
-            app:destination="@id/userDashboardFragment" />
+            android:id="@+id/action_loginFragment_to_adminHomeFragment"
+            app:destination="@id/adminHomeFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_userHomeFragment"
+            app:destination="@id/userHomeFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/userRegistrationFragment"
@@ -65,11 +38,6 @@
         android:name="me.arvin.ezylib.ui.fragment.admin.AddBookFragment"
         android:label="AddBookFragment"
         tools:layout="@layout/fragment_add_book" />
-    <fragment
-        android:id="@+id/bookListFragment"
-        android:name="me.arvin.ezylib.ui.fragment.universal.BookListFragment"
-        android:label="BookListFragment"
-        tools:layout="@layout/fragment_book_list" />
     <fragment
         android:id="@+id/adminEditProfileFragment"
         android:name="me.arvin.ezylib.ui.fragment.admin.AdminEditProfileFragment"
@@ -100,26 +68,110 @@
             app:argType="string" />
 
     </fragment>
-    <fragment
-        android:id="@+id/userDashboardFragment"
-        android:name="me.arvin.ezylib.ui.fragment.user.UserDashboardFragment"
-        android:label="user_dashboard_fragment"
-        tools:layout="@layout/fragment_user_dashboard">
-        <action
-            android:id="@+id/action_userDashboardFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-        <action
-            android:id="@+id/action_userDashboardFragment_to_searchBookFragment"
-            app:destination="@id/searchBookFragment" />
-        <action
-            android:id="@+id/action_userDashboardFragment_to_studentBorrowedListFragment"
-            app:destination="@id/studentBorrowedListFragment" />
-    </fragment>
 
     <fragment
         android:id="@+id/studentBorrowedListFragment"
         android:name="me.arvin.ezylib.ui.fragment.user.StudentBorrowedListFragment"
         android:label="student_borrowed_list_fragment"
         tools:layout="@layout/fragment_borrowed_list" />
+    <fragment
+        android:id="@+id/adminHomeFragment"
+        android:name="me.arvin.ezylib.ui.fragment.admin.AdminHomeFragment"
+        android:label="AdminHomeFragment"
+        tools:layout="@layout/fragment_admin_home">
+        <action
+            android:id="@+id/action_adminHomeFragment_to_addBookFragment"
+            app:destination="@id/addBookFragment" />
+        <action
+            android:id="@+id/action_adminHomeFragment_to_adminEditProfileFragment"
+            app:destination="@id/adminEditProfileFragment" />
+        <action
+            android:id="@+id/action_adminHomeFragment_to_searchBookFragment"
+            app:destination="@id/searchBookFragment" />
+        <action
+            android:id="@+id/action_adminHomeFragment_to_borrowedListFragment"
+            app:destination="@id/borrowedListFragment" />
+        <action
+            android:id="@+id/action_adminHomeFragment_to_addUserFragment"
+            app:destination="@id/addUserFragment" />
+        <action
+            android:id="@+id/action_adminHomeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_adminHomeFragment_to_faqFragment"
+            app:destination="@id/faqFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userHomeFragment"
+        android:name="me.arvin.ezylib.ui.fragment.user.UserHomeFragment"
+        android:label="UserHomeFragment"
+        tools:layout="@layout/fragment_user_home">
+        <action
+            android:id="@+id/action_userHomeFragment_to_studentBorrowedListFragment"
+            app:destination="@id/studentBorrowedListFragment" />
+        <action
+            android:id="@+id/action_userHomeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_userHomeFragment_to_searchBookFragment"
+            app:destination="@id/searchBookFragment" />
+        <action
+            android:id="@+id/action_userHomeFragment_to_userEditProfileFragment"
+            app:destination="@id/userEditProfileFragment" />
+        <action
+            android:id="@+id/action_userHomeFragment_to_faqFragment"
+            app:destination="@id/faqFragment" />
+        <action
+            android:id="@+id/action_userHomeFragment_to_penaltyFragment"
+            app:destination="@id/penaltyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userEditProfileFragment"
+        android:name="me.arvin.ezylib.ui.fragment.user.UserEditProfileFragment"
+        android:label="fragment_user_edit_profile"
+        tools:layout="@layout/fragment_admin_edit_profile" />
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="me.arvin.ezylib.ui.fragment.universal.ForgotPasswordFragment"
+        android:label="fragment_forgot_password"
+        tools:layout="@layout/fragment_forgot_password" />
+    <fragment
+        android:id="@+id/faqFragment"
+        android:name="me.arvin.ezylib.ui.fragment.universal.FaqFragment"
+        android:label="FaqFragment"
+        tools:layout="@layout/fragment_faq"/>
+    <fragment
+        android:id="@+id/penaltyFragment"
+        android:name="me.arvin.ezylib.ui.fragment.user.PenaltyFragment"
+        android:label="PenaltyFragment"
+        tools:layout="@layout/fragment_penalty">
+        <action
+            android:id="@+id/action_penaltyFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="me.arvin.ezylib.ui.fragment.user.PaymentFragment"
+        android:label="PaymentFragment"
+        tools:layout="@layout/fragment_payment">
+        <action
+            android:id="@+id/action_paymentFragment_to_invoiceFragment"
+            app:destination="@id/invoiceFragment" />
+        <argument
+            android:name="params"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/invoiceFragment"
+        android:name="me.arvin.ezylib.ui.fragment.user.InvoiceFragment"
+        android:label="fragment_invoice"
+        tools:layout="@layout/fragment_invoice" >
+        <argument
+            android:name="params"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_invoiceFragment_to_userHomeFragment"
+            app:destination="@id/userHomeFragment" />
+    </fragment>
 
 </navigation>

@@ -1,34 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="2dp"
+    android:background="#2C2C2C"
     android:orientation="vertical"
-    android:background="@drawable/gradient_background">
-
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/layout_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize" />
+    android:padding="16dp">
 
     <LinearLayout
-        android:id="@+id/llHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        android:visibility="gone">
-
-        <TextView
-            android:id="@+id/tvStudentId"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/poppins_regular"
-            android:text="Student ID"
-            android:textColor="@color/white"
-            android:textSize="10sp" />
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/tvBookName"
@@ -41,16 +23,6 @@
             android:textColor="@color/white"
             android:textSize="10sp" />
 
-        <TextView
-            android:id="@+id/tvBorrowedDate"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/poppins_regular"
-            android:gravity="center"
-            android:text="Borrowed Date"
-            android:textColor="@color/white"
-            android:textSize="10sp" />
 
         <TextView
             android:id="@+id/tvReturnDate"
@@ -63,11 +35,32 @@
             android:textColor="@color/white"
             android:textSize="10sp" />
 
+        <TextView
+            android:id="@+id/tvPenalty"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:text="RM 5"
+            android:textColor="@color/white"
+            android:textSize="10sp" />
+
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <TextView
+        android:id="@+id/btnPayAndReturnBook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_background_delte"
+        android:fontFamily="@font/poppins_bold"
+        android:gravity="center"
+        android:paddingHorizontal="30dp"
+        android:paddingVertical="5dp"
+        android:text="Pay &amp; Return Book"
+        android:textAllCaps="true"
+        android:textColor="@color/white" />
+
 
 </LinearLayout>

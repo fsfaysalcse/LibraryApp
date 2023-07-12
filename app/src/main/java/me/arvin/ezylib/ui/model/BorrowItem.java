@@ -54,5 +54,15 @@ public class BorrowItem {
     public void setStudentId(String studentId) {
         this.studentId = studentId;
     }
+
+    @Override
+    public String toString() {
+        return "BookId : " + bookId + "\n" +
+                "BookTitle : " + bookTitle + "\n" +
+                "BorrowDate : " + borrowDate + "\n" +
+                "ReturnDate : " + returnDate + "\n" +
+                "Fine : RM 5" + "\n" +
+                "StudentId : " + studentId + "\n";
+    }
 }
 

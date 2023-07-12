@@ -2,10 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/teal_200"
+    android:layout_marginBottom="2dp"
+    android:background="@color/purple_200"
     android:orientation="horizontal"
-    android:padding="16dp"
-    android:layout_marginBottom="2dp">
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/tvStudentId"
@@ -14,7 +14,7 @@
         android:layout_weight="1"
         android:fontFamily="@font/poppins_regular"
         android:text="Student ID"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="10sp" />
 
     <TextView
@@ -25,7 +25,7 @@
         android:fontFamily="@font/poppins_regular"
         android:gravity="center"
         android:text="Book Name"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="10sp" />
 
     <TextView
@@ -36,7 +36,7 @@
         android:fontFamily="@font/poppins_regular"
         android:gravity="center"
         android:text="Borrowed Date"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="10sp" />
 
     <TextView
@@ -47,6 +47,6 @@
         android:fontFamily="@font/poppins_regular"
         android:gravity="center"
         android:text="Return Date"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="10sp" />
 </LinearLayout>

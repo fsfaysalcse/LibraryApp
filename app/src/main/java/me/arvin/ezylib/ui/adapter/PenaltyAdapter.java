@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import me.arvin.ezylib.R;
 import me.arvin.ezylib.ui.model.BorrowItem;
 
-public class BorrowedBookAdapter extends ListAdapter<BorrowItem, BorrowedBookAdapter.BorrowedBookViewHolder> {
+public class PenaltyAdapter extends ListAdapter<BorrowItem, PenaltyAdapter.PenaltyViewHolder> {
 
     private Context context;
 
@@ -23,9 +24,7 @@ public class BorrowedBookAdapter extends ListAdapter<BorrowItem, BorrowedBookAda
     }
 
     private OnItemClickListener listener;
-
-
-    public BorrowedBookAdapter(Context context, OnItemClickListener listener) {
+    public PenaltyAdapter(Context context, OnItemClickListener listener) {
         super(DIFF_CALLBACK);
         this.context = context;
         this.listener = listener;
@@ -33,21 +32,25 @@ public class BorrowedBookAdapter extends ListAdapter<BorrowItem, BorrowedBookAda
 
     @NonNull
     @Override
-    public BorrowedBookViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_borrowed_book, parent, false);
-        return new BorrowedBookViewHolder(view);
+    public PenaltyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.item_penalty, parent, false);
+        return new PenaltyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BorrowedBookViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PenaltyViewHolder holder, int position) {
         BorrowItem borrowItem = getItem(position);
 
-        holder.tvStudentId.setText(borrowItem.getStudentId());
-        holder.tvBookName.setText(borrowItem.getBookTitle());
-        holder.tvBorrowedDate.setText(borrowItem.getBorrowDate());
-        holder.tvReturnDate.setText(borrowItem.getReturnDate());
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        if (!borrowItem.getBookTitle().isEmpty()) {
+            holder.tvBookName.setText(borrowItem.getBookTitle());
+        }
+
+        if (borrowItem.getReturnDate().isEmpty()) {
+            holder.tvReturnDate.setText(borrowItem.getReturnDate());
+        }
+
+        holder.btnPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 listener.onItemClick(borrowItem);
@@ -55,19 +58,15 @@ public class BorrowedBookAdapter extends ListAdapter<BorrowItem, BorrowedBookAda
         });
     }
 
-    public class BorrowedBookViewHolder extends RecyclerView.ViewHolder {
-        TextView tvStudentId, tvBookName, tvBorrowedDate, tvReturnDate;
+    public class PenaltyViewHolder extends RecyclerView.ViewHolder {
+        TextView  tvBookName, tvReturnDate;
+        TextView btnPay;
 
-        public BorrowedBookViewHolder(@NonNull View itemView) {
+        public PenaltyViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvStudentId = itemView.findViewById(R.id.tvStudentId);
             tvBookName = itemView.findViewById(R.id.tvBookName);
-            tvBorrowedDate = itemView.findViewById(R.id.tvBorrowedDate);
             tvReturnDate = itemView.findViewById(R.id.tvReturnDate);
-
-            itemView.setOnClickListener(v -> {
-                int position = getAdapterPosition();
-            });
+            btnPay = itemView.findViewById(R.id.btnPayAndReturnBook);
         }
     }
 

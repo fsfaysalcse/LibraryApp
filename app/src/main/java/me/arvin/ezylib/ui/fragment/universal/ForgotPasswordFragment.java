@@ -1,66 +1,104 @@
 package me.arvin.ezylib.ui.fragment.universal;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 
 import me.arvin.ezylib.R;
+import me.arvin.ezylib.databinding.FragmentForgotPasswordBinding;
+import me.arvin.ezylib.ui.utli.SharedPreferenceManager;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ForgotPasswordFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class ForgotPasswordFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private FragmentForgotPasswordBinding binding;
+    private NavController navController;
+    private FirebaseAuth firebaseAuth;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private ProgressDialog progressDialog;
 
-    public ForgotPasswordFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ForgotPasswordFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ForgotPasswordFragment newInstance(String param1, String param2) {
-        ForgotPasswordFragment fragment = new ForgotPasswordFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    SharedPreferenceManager preferenceManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_forgot_password, container, false);
+        binding = FragmentForgotPasswordBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+        init(view);
+        setupView();
+        return view;
+    }
+
+    private void init(View view) {
+        firebaseAuth = FirebaseAuth.getInstance();
+        navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
+
+
+        progressDialog = new ProgressDialog(requireContext());
+        progressDialog.setTitle("Logging in");
+        progressDialog.setMessage("Please wait...");
+
+    }
+
+    private void setupView() {
+
+
+        binding.btnForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = binding.etEmail.getText().toString().trim();
+
+                if (email.isEmpty()) {
+                    binding.etEmail.setError("Please enter email");
+                    return;
+                }
+
+                performForgotPassword(email);
+            }
+        });
+    }
+
+    private void performForgotPassword(String email) {
+        progressDialog.show();
+
+        firebaseAuth.sendPasswordResetEmail(email)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        progressDialog.dismiss();
+                        Toast.makeText(requireContext(), "Password reset email sent", Toast.LENGTH_SHORT).show();
+                        navController.navigateUp();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        progressDialog.dismiss();
+                        if (e instanceof FirebaseAuthInvalidUserException) {
+                            Toast.makeText(requireContext(), "User account not found", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(requireContext(), "Failed to send reset email", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }

@@ -18,20 +18,10 @@
         android:background="@color/colorPrimary"
         android:orientation="horizontal"
         android:padding="16dp"
-        android:visibility="gone">
+        android:visibility="visible">
+
 
         <TextView
-            android:id="@+id/tvStudentId"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/poppins_regular"
-            android:text="Student ID"
-            android:textColor="@color/white"
-            android:textSize="10sp" />
-
-        <TextView
-            android:id="@+id/tvBookName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -42,18 +32,6 @@
             android:textSize="10sp" />
 
         <TextView
-            android:id="@+id/tvBorrowedDate"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/poppins_regular"
-            android:gravity="center"
-            android:text="Borrowed Date"
-            android:textColor="@color/white"
-            android:textSize="10sp" />
-
-        <TextView
-            android:id="@+id/tvReturnDate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -62,6 +40,17 @@
             android:text="Return Date"
             android:textColor="@color/white"
             android:textSize="10sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:text="Penalty"
+            android:textColor="@color/white"
+            android:textSize="10sp" />
+
 
     </LinearLayout>
 
