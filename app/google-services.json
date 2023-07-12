@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "47645729179",
+    "project_id": "ezylib-8be80",
+    "storage_bucket": "ezylib-8be80.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:47645729179:android:cb92d8937579843b3f013e",
+        "android_client_info": {
+          "package_name": "me.android.ezylib"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "47645729179-tps70uge4j334t5e8bn3vtrtsvoaofqp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCroai1_76cqm8c1eT_AcJYpjCEzI-eYnI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "47645729179-tps70uge4j334t5e8bn3vtrtsvoaofqp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
