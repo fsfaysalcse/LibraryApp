@@ -1,7 +1,9 @@
 package me.arvin.ezylib.ui.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -77,6 +79,14 @@ public class BookAdapter extends ListAdapter<Book, BookAdapter.BookViewHolder> {
                 binding.btnDelete.setOnClickListener(v -> listener.onDeleteClick(book));
             } else {
                 binding.btnDelete.setVisibility(android.view.View.GONE);
+            }
+
+            Log.d("dfsdfgdfsg", "bind: "+book.isBorrowed());
+
+            if (!book.isBorrowed()) {
+                binding.tvAvailability.setText("Available");
+            } else {
+                binding.tvAvailability.setText("Not Available");
             }
         }
     }

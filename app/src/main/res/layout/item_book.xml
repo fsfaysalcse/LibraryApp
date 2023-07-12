@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     app:cardCornerRadius="5dp"
     app:cardUseCompatPadding="true">
 
@@ -49,6 +50,18 @@
             android:text="Book Id: 43534345"
             android:textColor="@color/black"
             android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tvAvailability"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_background_delte"
+            android:fontFamily="@font/poppins_regular"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="5dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/rectangle_11_color" />
+
 
         <TextView
             android:id="@+id/btnDelete"
