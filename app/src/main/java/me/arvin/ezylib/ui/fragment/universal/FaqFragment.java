@@ -61,11 +61,11 @@ public class FaqFragment extends Fragment {
         FAQItem iOSFAQ = new FAQItem("How can a library app benefit users?", "A library app can benefit users by providing them with a convenient way to access the library's catalog and resources from their mobile devices. It also allows users to manage their accounts, renew items, and pay fines.");
         faqList.add(iOSFAQ);
 
-        FAQItem appleFAQ = new FAQItem("What features can a library app have?", "Apple Inc. is a multinational technology company headquartered in Cupertino, California. It designs, develops, and sells a range of consumer electronics, software, and online services. Apple is best known for its products, including the iPhone, iPad, Mac, Apple Watch, and Apple TV. The company also offers services like the App Store, iCloud, Apple Music, and Apple Pay.");
+        FAQItem appleFAQ = new FAQItem("What features can a library app have?", "A library app can have a variety of features, including a catalog search, account management, and a way to pay fines. It can also have a feature that allows users to place holds on items and renew items.");
         faqList.add(appleFAQ);
 
 
-        FAQItem macFAQ = new FAQItem("Can I use a library app to request or reserve boos", "Yes, most library apps allow users to place holds or requests on books or other materials. When an item is not currently available, users can request it through the app, and they will be notified when the item becomes available for pickup. This feature helps users secure popular items and ensures a");
+        FAQItem macFAQ = new FAQItem("Can I use a library app to request or reserve books", "Yes, most library apps allow users to place holds or requests on books or other materials. When an item is not currently available, users can request it through the app, and they will be notified when the item becomes available for pickup. This feature helps users secure popular items and ensures that they do not miss out on any new releases.");
         faqList.add(macFAQ);
 
 

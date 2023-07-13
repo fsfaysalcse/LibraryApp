@@ -117,7 +117,6 @@ public class SearchBookFragment extends Fragment implements BorrowAdapter.OnItem
     }
 
     private void getAllBooks() {
-        borrowAdapter.getCurrentList().clear();
         binding.etSearch.setText("");
         progressDialog.show();
         bookList = new ArrayList<>();
