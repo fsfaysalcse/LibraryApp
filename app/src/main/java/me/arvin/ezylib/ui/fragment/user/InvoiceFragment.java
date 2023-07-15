@@ -74,6 +74,7 @@ public class InvoiceFragment extends Fragment {
     private void saveBorrowItem() {
 
         BorrowItem borrowItem = new Gson().fromJson(args.getParams(), BorrowItem.class);
+        borrowItem.setReturnDate(DateUtils.getCurrentDate());
         progressDialog.show();
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         firestore.collection("borrows")
@@ -84,7 +85,7 @@ public class InvoiceFragment extends Fragment {
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             firestore.collection("borrows")
                                     .document(document.getId())
-                                    .update("returnStatus", "Returned Pending")
+                                    .update("returnStatus", "Returned Pending", "returnDate", DateUtils.getCurrentDate())
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {

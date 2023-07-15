@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/gradient_background"
     tools:context="me.arvin.ezylib.ui.fragment.admin.AdminDashboardFragment">
 
@@ -97,17 +97,36 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tvFaq"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Frequently Ask Question"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:fontFamily="@font/poppins_regular"
-            android:gravity="center"
-            android:layout_marginTop="20dp"
-            android:textAllCaps="true"/>
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/tvFaq"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_background"
+                android:fontFamily="@font/poppins_bold"
+                android:padding="16dp"
+                android:text="FAQ"
+                android:textAllCaps="true" />
+
+            <Button
+                android:id="@+id/btnReturnList"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_background"
+                android:fontFamily="@font/poppins_bold"
+                android:padding="16dp"
+                android:text="Return List"
+                android:textAllCaps="true" />
+
+        </LinearLayout>
 
 
     </LinearLayout>

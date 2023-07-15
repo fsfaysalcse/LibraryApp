@@ -2,7 +2,6 @@ package me.arvin.ezylib.ui.fragment.user;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +44,8 @@ public class StudentBorrowedListFragment extends Fragment implements BorrowedBoo
 
     private FirebaseFirestore firestore;
 
+    private List<BorrowItem> borrowedBooks;
+
 
     @Nullable
     @Override
@@ -57,6 +58,7 @@ public class StudentBorrowedListFragment extends Fragment implements BorrowedBoo
     }
 
     private void init() {
+        borrowedBooks = new ArrayList<>();
         firestore = FirebaseFirestore.getInstance();
         preferenceManager = new SharedPreferenceManager(requireContext());
         dialog = new ProgressDialog(requireContext());
@@ -80,7 +82,6 @@ public class StudentBorrowedListFragment extends Fragment implements BorrowedBoo
     public void onResume() {
         super.onResume();
         getAllTheBorrowedBooks();
-        Log.d("dsgdsfgdfsg", "onResume: ");
     }
 
     private void getAllTheBorrowedBooks() {
@@ -92,7 +93,6 @@ public class StudentBorrowedListFragment extends Fragment implements BorrowedBoo
                 .addOnCompleteListener(task -> {
                     dialog.dismiss();
                     if (task.isSuccessful()) {
-                        List<BorrowItem> borrowedBooks = new ArrayList<>();
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             String borrowedId = document.getString("borrowedId");
                             String bookId = document.getString("bookId");
@@ -107,7 +107,7 @@ public class StudentBorrowedListFragment extends Fragment implements BorrowedBoo
                         }
                         if (borrowedBooks.size() > 0) {
                             binding.llHeader.setVisibility(View.VISIBLE);
-                            borrowedBookAdapter.submitList(borrowedBooks);
+                            borrowedBookAdapter.setBorrowItemList(borrowedBooks);
                         } else {
                             binding.llHeader.setVisibility(View.GONE);
                             Toast.makeText(requireContext(), "No borrowed books", Toast.LENGTH_SHORT).show();
@@ -191,7 +191,9 @@ public class StudentBorrowedListFragment extends Fragment implements BorrowedBoo
                     public void onSuccess(Void aVoid) {
                         dialog.dismiss();
                         Toast.makeText(requireActivity(), "Book returned successfully", Toast.LENGTH_SHORT).show();
-                        navController.navigateUp();
+                        borrowedBooks.clear();
+                        borrowedBookAdapter.setBorrowItemList(borrowedBooks);
+                        getAllTheBorrowedBooks();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override

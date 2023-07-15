@@ -21,14 +21,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.arvin.ezylib.MainActivity;
-import me.arvin.ezylib.ui.adapter.BookAdapter;
 import me.arvin.ezylib.databinding.FragmentBookListBinding;
+import me.arvin.ezylib.ui.adapter.BookAdapter;
 import me.arvin.ezylib.ui.model.Book;
 
 public class BookListFragment extends Fragment implements BookAdapter.OnItemClickListener {
 
     private BookAdapter bookAdapter;
-    private List<Book> bookList;
 
     private FragmentBookListBinding binding;
     private NavController navController;
@@ -36,6 +35,8 @@ public class BookListFragment extends Fragment implements BookAdapter.OnItemClic
     private FirebaseFirestore firestore;
 
     private ProgressDialog dialog;
+
+    private List<Book> bookList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,6 +49,7 @@ public class BookListFragment extends Fragment implements BookAdapter.OnItemClic
     }
 
     private void init(View view) {
+        bookList = new ArrayList<>();
         dialog = new ProgressDialog(requireContext());
         dialog.setTitle("Loading Books");
         dialog.setMessage("Please wait...");
@@ -62,12 +64,28 @@ public class BookListFragment extends Fragment implements BookAdapter.OnItemClic
     }
 
     public void setupView() {
-        bookList = new ArrayList<>();
         bookAdapter = new BookAdapter(getActivity(), this);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         binding.recyclerView.setAdapter(bookAdapter);
 
+        binding.reload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadBooks();
+            }
+        });
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadBooks();
+    }
+
+    private void loadBooks() {
         dialog.show();
+        List<Book> bookList = new ArrayList<>();
         firestore.collection("books")
                 .get()
                 .addOnCompleteListener(task -> {
@@ -89,7 +107,7 @@ public class BookListFragment extends Fragment implements BookAdapter.OnItemClic
                         if (bookList.size() == 0) {
                             Toast.makeText(getActivity(), "No books found", Toast.LENGTH_SHORT).show();
                         } else {
-                            bookAdapter.submitList(bookList);
+                            bookAdapter.setBookList(bookList);
                         }
                     } else {
                         Toast.makeText(getActivity(), "Failed to fetch books", Toast.LENGTH_SHORT).show();
@@ -122,8 +140,7 @@ public class BookListFragment extends Fragment implements BookAdapter.OnItemClic
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        bookList.remove(book);
-                        bookAdapter.notifyItemRemoved(bookList.indexOf(book));
+                        loadBooks();
                         Toast.makeText(requireContext(), "Book deleted successfully", Toast.LENGTH_SHORT).show();
                     }
                 })

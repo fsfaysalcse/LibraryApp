@@ -9,18 +9,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.DiffUtil;
-import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import me.arvin.ezylib.R;
 import me.arvin.ezylib.ui.model.BorrowItem;
 import me.arvin.ezylib.ui.utli.SharedPreferenceManager;
 
-public class BorrowedBookAdapter extends ListAdapter<BorrowItem, BorrowedBookAdapter.BorrowedBookViewHolder> {
+public class BorrowedBookAdapter extends RecyclerView.Adapter<BorrowedBookAdapter.BorrowedBookViewHolder> {
 
     private Context context;
-
+    private List<BorrowItem> borrowItemList;
     private SharedPreferenceManager preferenceManager;
 
     public interface OnItemClickListener {
@@ -31,10 +32,9 @@ public class BorrowedBookAdapter extends ListAdapter<BorrowItem, BorrowedBookAda
 
     private OnItemClickListener listener;
 
-
     public BorrowedBookAdapter(Context context, OnItemClickListener listener) {
-        super(DIFF_CALLBACK);
         this.context = context;
+        this.borrowItemList = new ArrayList<>();
         this.listener = listener;
     }
 
@@ -48,7 +48,7 @@ public class BorrowedBookAdapter extends ListAdapter<BorrowItem, BorrowedBookAda
 
     @Override
     public void onBindViewHolder(@NonNull BorrowedBookViewHolder holder, int position) {
-        BorrowItem borrowItem = getItem(position);
+        BorrowItem borrowItem = borrowItemList.get(position);
 
         holder.tvStudentId.setText(borrowItem.getStudentId());
         holder.tvBookName.setText(borrowItem.getBookTitle());
@@ -72,14 +72,25 @@ public class BorrowedBookAdapter extends ListAdapter<BorrowItem, BorrowedBookAda
             @Override
             public void onClick(View v) {
                 if (borrowItem.getReturnStatus().equals("Return Pending")) {
-                    Toast.makeText(context, "This book already returned to library , please wait for admin approval.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "This book has already been returned to the library. Please wait for admin approval.", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 listener.onReturnClick(borrowItem);
             }
         });
+    }
 
+    @Override
+    public int getItemCount() {
+        return borrowItemList.size();
+    }
 
+    public void setBorrowItemList(List<BorrowItem> borrowItemList) {
+        this.borrowItemList.clear();
+        if (borrowItemList != null) {
+            this.borrowItemList.addAll(borrowItemList);
+        }
+        notifyDataSetChanged();
     }
 
     public class BorrowedBookViewHolder extends RecyclerView.ViewHolder {
@@ -95,19 +106,6 @@ public class BorrowedBookAdapter extends ListAdapter<BorrowItem, BorrowedBookAda
             btnReturnBook = itemView.findViewById(R.id.btnReturnBook);
             tvRetrunStatus = itemView.findViewById(R.id.tvRetrunStatus);
             llReturnBook = itemView.findViewById(R.id.llReturnBook);
-
         }
     }
-
-    private static final DiffUtil.ItemCallback<BorrowItem> DIFF_CALLBACK = new DiffUtil.ItemCallback<BorrowItem>() {
-        @Override
-        public boolean areItemsTheSame(@NonNull BorrowItem oldItem, @NonNull BorrowItem newItem) {
-            return oldItem.getBookId().equals(newItem.getBookId());
-        }
-
-        @Override
-        public boolean areContentsTheSame(@NonNull BorrowItem oldItem, @NonNull BorrowItem newItem) {
-            return oldItem.getBookId().equals(newItem.getBookId());
-        }
-    };
 }

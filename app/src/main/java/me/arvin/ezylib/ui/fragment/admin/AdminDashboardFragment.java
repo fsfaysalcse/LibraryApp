@@ -69,6 +69,13 @@ public class AdminDashboardFragment extends Fragment {
                 navController.navigate(R.id.action_adminHomeFragment_to_faqFragment);
             }
         });
+
+        binding.btnReturnList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(R.id.action_adminHomeFragment_to_returnsFragment);
+            }
+        });
     }
 
     private void setupView() {

@@ -92,7 +92,7 @@ public class BorrowedListFragment extends Fragment implements BorrowedBookAdapte
                         }
                         if (borrowedBooks.size() > 0) {
                             binding.llHeader.setVisibility(View.VISIBLE);
-                            borrowedBookAdapter.submitList(borrowedBooks);
+                            borrowedBookAdapter.setBorrowItemList(borrowedBooks);
                         } else {
                             binding.llHeader.setVisibility(View.GONE);
                             Toast.makeText(requireContext(), "No borrowed books", Toast.LENGTH_SHORT).show();

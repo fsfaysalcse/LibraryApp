@@ -28,7 +28,6 @@ import java.util.List;
 import me.arvin.ezylib.MainActivity;
 import me.arvin.ezylib.databinding.FragmentSearchBookBinding;
 import me.arvin.ezylib.ui.adapter.BorrowAdapter;
-import me.arvin.ezylib.ui.fragment.universal.SearchBookFragmentDirections;
 import me.arvin.ezylib.ui.model.Book;
 
 
@@ -113,6 +112,10 @@ public class SearchBookFragment extends Fragment implements BorrowAdapter.OnItem
     @Override
     public void onResume() {
         super.onResume();
+        if (bookList != null && bookList.size() > 0) {
+            bookList.clear();
+            borrowAdapter.submitList(bookList);
+        }
         getAllBooks();
     }
 

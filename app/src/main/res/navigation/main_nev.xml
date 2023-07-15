@@ -104,6 +104,9 @@
         <action
             android:id="@+id/action_adminHomeFragment_to_faqFragment"
             app:destination="@id/faqFragment" />
+        <action
+            android:id="@+id/action_adminHomeFragment_to_returnsFragment"
+            app:destination="@id/returnsFragment" />
     </fragment>
     <fragment
         android:id="@+id/userHomeFragment"
@@ -176,6 +179,16 @@
         <action
             android:id="@+id/action_invoiceFragment_to_userHomeFragment"
             app:destination="@id/userHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/returnsFragment"
+        android:name="me.arvin.ezylib.ui.fragment.admin.ReturnsFragment"
+        android:label="ReturnsFragment"
+        tools:layout="@layout/fragment_returns">
+
+
+
+
     </fragment>
 
 </navigation>

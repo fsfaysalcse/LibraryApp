@@ -109,7 +109,7 @@ public class PenaltyFragment extends Fragment implements PenaltyAdapter.OnItemCl
 
                         if (borrowedBooks.size() > 0) {
                             binding.llHeader.setVisibility(View.VISIBLE);
-                            penaltyAdapter.submitList(borrowedBooks);
+                            penaltyAdapter.setBorrowItemList(borrowedBooks);
                         } else {
                             binding.llHeader.setVisibility(View.GONE);
                             Toast.makeText(requireContext(), "No Penalty information found", Toast.LENGTH_SHORT).show();
