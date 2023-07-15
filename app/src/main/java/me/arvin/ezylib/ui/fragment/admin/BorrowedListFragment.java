@@ -21,8 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.arvin.ezylib.MainActivity;
-import me.arvin.ezylib.ui.adapter.BorrowedBookAdapter;
 import me.arvin.ezylib.databinding.FragmentBorrowedBookBinding;
+import me.arvin.ezylib.ui.adapter.BorrowedBookAdapter;
 import me.arvin.ezylib.ui.model.BorrowItem;
 
 public class BorrowedListFragment extends Fragment implements BorrowedBookAdapter.OnItemClickListener {
@@ -50,10 +50,10 @@ public class BorrowedListFragment extends Fragment implements BorrowedBookAdapte
         dialog.setMessage("Loading...");
         dialog.setCancelable(false);
 
-        binding.toolbar.titleTextView.setText("Borrowed Books");
-        binding.toolbar.backButton.setOnClickListener(v -> navController.navigateUp());
+        binding.toolbarBorrow.titleTextView.setText("Borrowed Books");
+        binding.toolbarBorrow.backButton.setOnClickListener(v -> navController.navigateUp());
 
-        borrowedBookAdapter = new BorrowedBookAdapter(getActivity(),this);
+        borrowedBookAdapter = new BorrowedBookAdapter(getActivity(), this);
     }
 
     private void setupView() {
@@ -84,8 +84,10 @@ public class BorrowedListFragment extends Fragment implements BorrowedBookAdapte
                             String studentId = document.getString("studentId");
                             String borrowedDate = document.getString("borrowDate");
                             String returnDate = document.getString("returnDate");
+                            String returnStatus = document.getString("returnStatus");
+                            String borrowedId = document.getString("borrowedId");
 
-                            BorrowItem borrowItem = new BorrowItem(bookId, bookTitle, borrowedDate, returnDate, studentId);
+                            BorrowItem borrowItem = new BorrowItem(bookId, bookTitle, borrowedDate, returnDate, studentId, returnStatus, borrowedId);
                             borrowedBooks.add(borrowItem);
                         }
                         if (borrowedBooks.size() > 0) {
@@ -118,6 +120,11 @@ public class BorrowedListFragment extends Fragment implements BorrowedBookAdapte
 
     @Override
     public void onItemClick(BorrowItem borrowItem) {
+
+    }
+
+    @Override
+    public void onReturnClick(BorrowItem borrowItem) {
 
     }
 }

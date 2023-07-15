@@ -82,7 +82,7 @@ public class BookListFragment extends Fragment implements BookAdapter.OnItemClic
                             boolean isBorrowed = document.getBoolean("isBorrowed");
 
                             // Create a Book object and add it to the bookList
-                            Book book = new Book(document.getId(), title, author, publishYear, isBorrowed);
+                            Book book = new Book(document.getId(), title, publishYear, author, isBorrowed);
                             bookList.add(book);
                         }
 

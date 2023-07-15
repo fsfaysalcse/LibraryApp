@@ -19,9 +19,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.gson.Gson;
 
 import me.arvin.ezylib.MainActivity;
+import me.arvin.ezylib.databinding.FragmentBorrowBinding;
 import me.arvin.ezylib.ui.model.Book;
 import me.arvin.ezylib.ui.model.BorrowItem;
-import me.arvin.ezylib.databinding.FragmentBorrowBinding;
 import me.arvin.ezylib.ui.model.Student;
 import me.arvin.ezylib.ui.utli.DateUtils;
 import me.arvin.ezylib.ui.utli.Utility;
@@ -141,17 +141,22 @@ public class BorrowFragment extends Fragment {
         String studentId = student.getStudentId();
         String borrowedDate = DateUtils.getCurrentDate();
         String returnDate = DateUtils.getDateInFuture(7);
+        String returnStatus = "Not Returned";
+
+
+        progressDialog.show();
+        String borrowId = firestore.collection("borrows").document().getId();
 
         BorrowItem borrowItem = new BorrowItem(
                 bookId,
                 bookTitle,
                 borrowedDate,
                 returnDate,
-                studentId
+                studentId,
+                returnStatus,
+                borrowId
         );
 
-        progressDialog.show();
-        String borrowId = firestore.collection("borrows").document().getId();
         firestore.collection("borrows")
                 .document(borrowId)
                 .set(borrowItem)

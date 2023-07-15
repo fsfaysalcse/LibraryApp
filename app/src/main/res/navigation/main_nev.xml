@@ -73,7 +73,11 @@
         android:id="@+id/studentBorrowedListFragment"
         android:name="me.arvin.ezylib.ui.fragment.user.StudentBorrowedListFragment"
         android:label="student_borrowed_list_fragment"
-        tools:layout="@layout/fragment_borrowed_list" />
+        tools:layout="@layout/fragment_borrowed_list" >
+        <action
+            android:id="@+id/action_studentBorrowedListFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+    </fragment>
     <fragment
         android:id="@+id/adminHomeFragment"
         android:name="me.arvin.ezylib.ui.fragment.admin.AdminHomeFragment"

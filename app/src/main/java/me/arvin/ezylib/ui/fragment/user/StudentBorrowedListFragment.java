@@ -2,6 +2,7 @@ package me.arvin.ezylib.ui.fragment.user;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +15,12 @@ import androidx.navigation.NavController;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.gson.Gson;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +28,8 @@ import me.arvin.ezylib.MainActivity;
 import me.arvin.ezylib.databinding.FragmentBorrowedBookBinding;
 import me.arvin.ezylib.ui.adapter.BorrowedBookAdapter;
 import me.arvin.ezylib.ui.model.BorrowItem;
+import me.arvin.ezylib.ui.model.Returned;
+import me.arvin.ezylib.ui.utli.DateUtils;
 import me.arvin.ezylib.ui.utli.SharedPreferenceManager;
 
 public class StudentBorrowedListFragment extends Fragment implements BorrowedBookAdapter.OnItemClickListener {
@@ -38,6 +43,8 @@ public class StudentBorrowedListFragment extends Fragment implements BorrowedBoo
 
     private SharedPreferenceManager preferenceManager;
 
+    private FirebaseFirestore firestore;
+
 
     @Nullable
     @Override
@@ -50,13 +57,14 @@ public class StudentBorrowedListFragment extends Fragment implements BorrowedBoo
     }
 
     private void init() {
+        firestore = FirebaseFirestore.getInstance();
         preferenceManager = new SharedPreferenceManager(requireContext());
         dialog = new ProgressDialog(requireContext());
         dialog.setMessage("Loading...");
         dialog.setCancelable(false);
 
-        binding.toolbar.titleTextView.setText("Borrowed Books");
-        binding.toolbar.backButton.setOnClickListener(v -> navController.navigateUp());
+        binding.toolbarBorrow.titleTextView.setText("Borrowed Books");
+        binding.toolbarBorrow.backButton.setOnClickListener(v -> navController.navigateUp());
 
         borrowedBookAdapter = new BorrowedBookAdapter(getActivity(), this);
     }
@@ -72,12 +80,12 @@ public class StudentBorrowedListFragment extends Fragment implements BorrowedBoo
     public void onResume() {
         super.onResume();
         getAllTheBorrowedBooks();
+        Log.d("dsgdsfgdfsg", "onResume: ");
     }
 
     private void getAllTheBorrowedBooks() {
         String stdId = preferenceManager.getStudentId();
         dialog.show();
-        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         firestore.collection("borrows")
                 .whereEqualTo("studentId", stdId)
                 .get()
@@ -86,13 +94,15 @@ public class StudentBorrowedListFragment extends Fragment implements BorrowedBoo
                     if (task.isSuccessful()) {
                         List<BorrowItem> borrowedBooks = new ArrayList<>();
                         for (QueryDocumentSnapshot document : task.getResult()) {
+                            String borrowedId = document.getString("borrowedId");
                             String bookId = document.getString("bookId");
                             String bookTitle = document.getString("bookTitle");
                             String studentId = document.getString("studentId");
                             String borrowedDate = document.getString("borrowDate");
                             String returnDate = document.getString("returnDate");
+                            String returnStatus = document.getString("returnStatus");
 
-                            BorrowItem borrowItem = new BorrowItem(bookId, bookTitle, borrowedDate, returnDate, studentId);
+                            BorrowItem borrowItem = new BorrowItem(bookId, bookTitle, borrowedDate, returnDate, studentId, returnStatus, borrowedId);
                             borrowedBooks.add(borrowItem);
                         }
                         if (borrowedBooks.size() > 0) {
@@ -126,4 +136,71 @@ public class StudentBorrowedListFragment extends Fragment implements BorrowedBoo
     @Override
     public void onItemClick(BorrowItem borrowItem) {
     }
+
+    @Override
+    public void onReturnClick(BorrowItem borrowItem) {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            LocalDate currentDate = LocalDate.now();
+            LocalDate parsedReturnDate = LocalDate.parse(borrowItem.getReturnDate());
+
+            if (currentDate.isAfter(parsedReturnDate)) {
+                String params = new Gson().toJson(borrowItem);
+                navController.navigate(StudentBorrowedListFragmentDirections.actionStudentBorrowedListFragmentToPaymentFragment(params));
+            } else {
+                String borrowedDate = DateUtils.getCurrentDate();
+                String returnedId = firestore.collection("returns").document().getId();
+
+                Returned returned = new Returned(
+                        returnedId,
+                        borrowItem.getBookId(),
+                        borrowItem.getBorrowedId(),
+                        borrowItem.getBookTitle(),
+                        borrowItem.getStudentId(),
+                        borrowedDate);
+
+                dialog.show();
+                firestore.collection("returns")
+                        .document(returnedId)
+                        .set(returned)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                updateBorrowedBook(borrowItem);
+                                dialog.dismiss();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                dialog.dismiss();
+                                Toast.makeText(requireActivity(), "Failed to borrow book", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+            }
+        }
+    }
+
+    private void updateBorrowedBook(BorrowItem borrowItem) {
+        dialog.show();
+        firestore.collection("borrows")
+                .document(borrowItem.getBorrowedId())
+                .update("returnStatus", "Return Pending")
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        dialog.dismiss();
+                        Toast.makeText(requireActivity(), "Book returned successfully", Toast.LENGTH_SHORT).show();
+                        navController.navigateUp();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        dialog.dismiss();
+                        Toast.makeText(requireActivity(), "Failed to return book", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+
 }

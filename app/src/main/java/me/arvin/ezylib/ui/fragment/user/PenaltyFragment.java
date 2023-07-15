@@ -55,10 +55,10 @@ public class PenaltyFragment extends Fragment implements PenaltyAdapter.OnItemCl
         dialog.setMessage("Loading...");
         dialog.setCancelable(false);
 
-        binding.toolbar.titleTextView.setText("Penalty");
-        binding.toolbar.backButton.setOnClickListener(v -> navController.navigateUp());
+        binding.toolbarPenalty.titleTextView.setText("Penalty");
+        binding.toolbarPenalty.backButton.setOnClickListener(v -> navController.navigateUp());
 
-        penaltyAdapter = new PenaltyAdapter(getActivity(),this);
+        penaltyAdapter = new PenaltyAdapter(getActivity(), this);
     }
 
     private void setupView() {
@@ -91,13 +91,15 @@ public class PenaltyFragment extends Fragment implements PenaltyAdapter.OnItemCl
                             String studentId = document.getString("studentId");
                             String borrowedDate = document.getString("borrowDate");
                             String returnDate = document.getString("returnDate");
+                            String returnStatus = document.getString("returnStatus");
+                            String borrowedId = document.getString("borrowedId");
 
                             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
                                 LocalDate currentDate = LocalDate.now();
                                 LocalDate parsedReturnDate = LocalDate.parse(returnDate);
 
-                                if (currentDate.isAfter(parsedReturnDate)) {
-                                    BorrowItem borrowItem = new BorrowItem(bookId, bookTitle, borrowedDate, returnDate, studentId);
+                                if (currentDate.isAfter(parsedReturnDate) && returnStatus.equals("Not Returned")){
+                                    BorrowItem borrowItem = new BorrowItem(bookId, bookTitle, borrowedDate, returnDate, studentId, returnStatus, borrowedId);
                                     borrowedBooks.add(borrowItem);
                                 }
                             }
@@ -124,6 +126,7 @@ public class PenaltyFragment extends Fragment implements PenaltyAdapter.OnItemCl
                 });
 
     }
+
 
     @Override
     public void onDestroyView() {

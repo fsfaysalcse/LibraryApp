@@ -1,52 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="2dp"
     android:background="@color/purple_200"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:padding="16dp">
 
-    <TextView
-        android:id="@+id/tvStudentId"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:fontFamily="@font/poppins_regular"
-        android:text="Student ID"
-        android:textColor="@color/white"
-        android:textSize="10sp" />
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/tvBookName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:fontFamily="@font/poppins_regular"
-        android:gravity="center"
-        android:text="Book Name"
-        android:textColor="@color/white"
-        android:textSize="10sp" />
 
-    <TextView
-        android:id="@+id/tvBorrowedDate"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:fontFamily="@font/poppins_regular"
-        android:gravity="center"
-        android:text="Borrowed Date"
-        android:textColor="@color/white"
-        android:textSize="10sp" />
+        <TextView
+            android:id="@+id/tvStudentId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Student ID"
+            android:textColor="@color/white"
+            android:textSize="10sp" />
 
-    <TextView
-        android:id="@+id/tvReturnDate"
-        android:layout_width="0dp"
+        <TextView
+            android:id="@+id/tvBookName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:text="Book Name"
+            android:textColor="@color/white"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/tvBorrowedDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:text="Borrowed Date"
+            android:textColor="@color/white"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/tvReturnDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:text="Return Date"
+            android:textColor="@color/white"
+            android:textSize="10sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llReturnBook"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:fontFamily="@font/poppins_regular"
-        android:gravity="center"
-        android:text="Return Date"
-        android:textColor="@color/white"
-        android:textSize="10sp" />
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/btnReturnBook"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/button_background_delte"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="5dp"
+            android:text="Return Book"
+            android:textAllCaps="true"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tvRetrunStatus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_light"
+            android:gravity="end"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="5dp"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            tools:text="Not Returned" />
+    </LinearLayout>
+
+
 </LinearLayout>

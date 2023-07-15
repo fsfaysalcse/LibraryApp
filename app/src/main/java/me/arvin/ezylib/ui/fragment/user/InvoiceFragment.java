@@ -21,6 +21,7 @@ import me.arvin.ezylib.MainActivity;
 import me.arvin.ezylib.R;
 import me.arvin.ezylib.databinding.FragmentInvoiceBinding;
 import me.arvin.ezylib.ui.model.BorrowItem;
+import me.arvin.ezylib.ui.model.Returned;
 import me.arvin.ezylib.ui.utli.DateUtils;
 
 public class InvoiceFragment extends Fragment {
@@ -73,28 +74,23 @@ public class InvoiceFragment extends Fragment {
     private void saveBorrowItem() {
 
         BorrowItem borrowItem = new Gson().fromJson(args.getParams(), BorrowItem.class);
-        String returnDate = DateUtils.getDateInFuture(7);
-        borrowItem.setReturnDate(returnDate);
-
         progressDialog.show();
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         firestore.collection("borrows")
-                .whereEqualTo("bookId", borrowItem.getBookId())
-                .whereEqualTo("bookTitle", borrowItem.getBookTitle())
-                .whereEqualTo("studentId", borrowItem.getStudentId())
+                .whereEqualTo("borrowedId", borrowItem.getBorrowedId())
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             firestore.collection("borrows")
                                     .document(document.getId())
-                                    .update("returnDate", borrowItem.getReturnDate())
+                                    .update("returnStatus", "Returned Pending")
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
                                             progressDialog.dismiss();
                                             binding.tvInvoice.setText(borrowItem.toString());
-                                            Toast.makeText(requireActivity(), "Borrow item updated successfully", Toast.LENGTH_SHORT).show();
+                                            perfromReturn(borrowItem);
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
@@ -112,6 +108,38 @@ public class InvoiceFragment extends Fragment {
                 });
 
 
+    }
+
+    private void perfromReturn(BorrowItem borrowItem) {
+        String borrowedDate = DateUtils.getCurrentDate();
+        String returnedId = firestore.collection("returns").document().getId();
+
+        Returned returned = new Returned(
+                returnedId,
+                borrowItem.getBookId(),
+                borrowItem.getBorrowedId(),
+                borrowItem.getBookTitle(),
+                borrowItem.getStudentId(),
+                borrowedDate);
+
+        progressDialog.show();
+        firestore.collection("returns")
+                .document(returnedId)
+                .set(returned)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(requireActivity(), "This book has returned successfully please wait for admin approval", Toast.LENGTH_SHORT).show();
+                        progressDialog.dismiss();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        progressDialog.dismiss();
+                        Toast.makeText(requireActivity(), "Failed to borrow book", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
 

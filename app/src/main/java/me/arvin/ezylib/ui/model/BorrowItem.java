@@ -7,12 +7,19 @@ public class BorrowItem {
     private String returnDate;
     private String studentId;
 
-    public BorrowItem(String bookId, String bookTitle, String borrowDate, String returnDate, String studentId) {
+    private String returnStatus;
+
+
+    private String borrowedId;
+
+    public BorrowItem(String bookId, String bookTitle, String borrowDate, String returnDate, String studentId, String returnStatus, String borrowedId) {
         this.bookId = bookId;
         this.bookTitle = bookTitle;
         this.borrowDate = borrowDate;
         this.returnDate = returnDate;
         this.studentId = studentId;
+        this.returnStatus = returnStatus;
+        this.borrowedId = borrowedId;
     }
 
     public String getBookId() {
@@ -53,6 +60,22 @@ public class BorrowItem {
 
     public void setStudentId(String studentId) {
         this.studentId = studentId;
+    }
+
+    public String getReturnStatus() {
+        return returnStatus;
+    }
+
+    public void setReturnStatus(String returnStatus) {
+        this.returnStatus = returnStatus;
+    }
+
+    public String getBorrowedId() {
+        return borrowedId;
+    }
+
+    public void setBorrowedId(String borrowedId) {
+        this.borrowedId = borrowedId;
     }
 
     @Override
