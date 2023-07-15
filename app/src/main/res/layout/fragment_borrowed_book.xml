@@ -11,6 +11,19 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize" />
 
+    <TextView
+        android:id="@+id/reload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="#37F9F9F9"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="center"
+        android:padding="16sp"
+        android:text="Tap here to reload"
+        android:textAllCaps="true"
+        android:textColor="@color/white" />
+
     <LinearLayout
         android:id="@+id/llHeader"
         android:layout_width="match_parent"

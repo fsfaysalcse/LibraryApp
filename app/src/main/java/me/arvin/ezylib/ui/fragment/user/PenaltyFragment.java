@@ -65,6 +65,9 @@ public class PenaltyFragment extends Fragment implements PenaltyAdapter.OnItemCl
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         binding.recyclerView.setAdapter(penaltyAdapter);
 
+
+        binding.reload.setOnClickListener(v -> getAllTheBorrowedBooks());
+
     }
 
 

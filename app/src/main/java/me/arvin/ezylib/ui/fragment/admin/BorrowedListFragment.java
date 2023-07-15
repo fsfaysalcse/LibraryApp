@@ -59,6 +59,9 @@ public class BorrowedListFragment extends Fragment implements BorrowedBookAdapte
     private void setupView() {
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         binding.recyclerView.setAdapter(borrowedBookAdapter);
+
+
+        binding.reload.setOnClickListener(v -> getAllTheBorrowedBooks());
     }
 
 

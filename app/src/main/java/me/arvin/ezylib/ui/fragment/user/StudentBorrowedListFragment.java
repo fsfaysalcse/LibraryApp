@@ -75,6 +75,8 @@ public class StudentBorrowedListFragment extends Fragment implements BorrowedBoo
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         binding.recyclerView.setAdapter(borrowedBookAdapter);
 
+
+        binding.reload.setOnClickListener(v -> getAllTheBorrowedBooks());
     }
 
 
